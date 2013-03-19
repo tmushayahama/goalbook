@@ -1,0 +1,9 @@
+{% if latest_poll_list %}
+    <ul>
+    {% for rm_user in latest_poll_list %}
+        <li><a href="/rm/{{ rm_user.id }}/">{{ rm_user.l_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}

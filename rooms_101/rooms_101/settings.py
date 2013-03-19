@@ -150,3 +150,4 @@ LOGGING = {
         },
     }
 }
+AUTH_PROFILE_MODULE = 'rm.RmUser'

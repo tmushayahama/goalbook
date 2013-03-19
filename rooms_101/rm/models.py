@@ -8,22 +8,20 @@
 # into your database.
 
 from django.db import models
+from django.contrib.auth.models import User
+import datetime
+from django.utils import timezone
 
 class RmUser(models.Model):
-    user_password = models.CharField(max_length=60)
-    email = models.CharField(max_length=150)
-    f_name = models.CharField(max_length=150)
-    l_name = models.CharField(max_length=150)
+    user = models.ForeignKey(User, unique=True, related_name ="foo")
     gender = models.CharField(max_length=3)
-    date_joined = models.DateTimeField()
     class Meta:
         db_table = u'rm_user'
     def __unicode__(self):
-        return u'%s %s' % (self.f_name, self.l_name)
-
+        return u'%s' % (self.user)
 
 class RmTaskCategory(models.Model):
-    name = models.CharField(max_length=150)
+    name = models.CharField(max_length=150, unique=True)
     description = models.CharField(max_length=3000, blank=True)
     class Meta:
         db_table = u'rm_task_category'
@@ -31,34 +29,27 @@ class RmTaskCategory(models.Model):
         return u'%s %s' % (self.name, self.description)
 
 class RmTaskType(models.Model):
-    id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=150)
+    name = models.CharField(max_length=150, unique=True)
     description = models.CharField(max_length=3000, blank=True)
     class Meta:
         db_table = u'rm_task_type'
 
 class RmPrivilegeType(models.Model):
-    id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=150)
+    name = models.CharField(max_length=150, unique=True)
     description = models.CharField(max_length=3000, blank=True)
     class Meta:
         db_table = u'rm_privilege_type'
 
-
-
-
 class RmGroupCategory(models.Model):
-    id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=150)
+    name = models.CharField(max_length=150, unique=True)
     description = models.CharField(max_length=3000, blank=True)
     class Meta:
         db_table = u'rm_group_category'
 
 class RmTask(models.Model):
-    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=150)
     is_group_task = models.IntegerField()
-    task_type_id = models.IntegerField()
+    task_type = models.ForeignKey(RmTaskType)
     task_category = models.ForeignKey(RmTaskCategory)
     points_awarded = models.IntegerField(null=True, blank=True)
     award = models.CharField(max_length=765, blank=True)
@@ -68,8 +59,7 @@ class RmTask(models.Model):
         db_table = u'rm_task'
 
 class RmGroup(models.Model):
-    id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=150)
+    name = models.CharField(max_length=150, unique=True)
     founder = models.ForeignKey(RmUser)
     group_category = models.ForeignKey(RmGroupCategory)
     founded = models.DateTimeField()
@@ -128,9 +118,10 @@ class RmFriend(models.Model):
     class Meta:
         db_table = u'rm_friend'
 
-class TaskHistory(models.Model):
+class RmTaskHistory(models.Model):
     task = models.ForeignKey(RmTask)
     date_done = models.DateTimeField()
     class Meta:
-        db_table = u'task_history'
+        db_table = u'rm_task_history'
+
 
