@@ -18,7 +18,7 @@ class RmUser(models.Model):
     class Meta:
         db_table = u'rm_user'
     def __unicode__(self):
-        return u'%s' % (self.user)
+        return self.user
 
 class RmTaskCategory(models.Model):
     name = models.CharField(max_length=150, unique=True)
