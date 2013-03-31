@@ -39,3 +39,10 @@ class RegistrationForm(ModelForm):
             raise forms.ValidationError('Passwords ')
         return self.cleaned_data
 
+class LoginForm(forms.Form):
+    email = forms.EmailField(label=u"Your Email",
+        widget=forms.TextInput(attrs={'class': 'input input-text'}),
+        required=True)
+    password = forms.CharField(label=u"Your New Password",
+        widget=forms.PasswordInput(render_value=False, attrs={'class': 'input input-text'}),
+        required=True)

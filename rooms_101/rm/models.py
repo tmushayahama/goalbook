@@ -17,8 +17,10 @@ class RmUser(models.Model):
     gender = models.CharField(max_length=3)
     class Meta:
         db_table = u'rm_user'
+   # def json(self):
+        
     def __unicode__(self):
-        return self.user
+        return u'%s' % (self.user)
 
 class RmTaskCategory(models.Model):
     name = models.CharField(max_length=150, unique=True)
@@ -26,25 +28,31 @@ class RmTaskCategory(models.Model):
     class Meta:
         db_table = u'rm_task_category'
     def __unicode__(self):
-        return u'%s %s' % (self.name, self.description)
+        return u'%s' % (self.name)
 
 class RmTaskType(models.Model):
     name = models.CharField(max_length=150, unique=True)
     description = models.CharField(max_length=3000, blank=True)
     class Meta:
         db_table = u'rm_task_type'
+    def __unicode__(self):
+        return u'%s' % (self.name)
 
 class RmPrivilegeType(models.Model):
     name = models.CharField(max_length=150, unique=True)
     description = models.CharField(max_length=3000, blank=True)
     class Meta:
         db_table = u'rm_privilege_type'
+    def __unicode__(self):
+        return u'%s' % (self.name)
 
 class RmGroupCategory(models.Model):
     name = models.CharField(max_length=150, unique=True)
     description = models.CharField(max_length=3000, blank=True)
     class Meta:
         db_table = u'rm_group_category'
+    def __unicode__(self):
+        return u'%s' % (self.name)
 
 class RmTask(models.Model):
     name = models.CharField(max_length=150)
@@ -57,6 +65,8 @@ class RmTask(models.Model):
     end_date = models.DateTimeField(null=True, blank=True)
     class Meta:
         db_table = u'rm_task'
+    def __unicode__(self):
+        return u'%s' % (self.name)
 
 class RmGroup(models.Model):
     name = models.CharField(max_length=150, unique=True)
@@ -66,6 +76,8 @@ class RmGroup(models.Model):
     decription = models.CharField(max_length=3000, blank=True)
     class Meta:
         db_table = u'rm_group'
+    def __unicode__(self):
+        return u'%s' % (self.name)
 
 class RmGroupMonitor(models.Model):
     user = models.ForeignKey(RmGroup, related_name="groupMonitorUser")
@@ -73,6 +85,29 @@ class RmGroupMonitor(models.Model):
     task = models.ForeignKey(RmTask)
     class Meta:
         db_table = u'rm_group_monitor'
+    def __unicode__(self):
+        return u'%s' % (self.name)
+
+class RmGroup(models.Model):
+    name = models.CharField(max_length=150, unique=True)
+    founder = models.ForeignKey(RmUser)
+    group_category = models.ForeignKey(RmGroupCategory)
+    founded = models.DateTimeField()
+    decription = models.CharField(max_length=3000, blank=True)
+    class Meta:
+        db_table = u'rm_group'
+    def __unicode__(self):
+        return u'%s' % (self.name)
+
+class RmGroupMonitor(models.Model):
+    user = models.ForeignKey(RmGroup, related_name="groupMonitorUser")
+    monitor = models.ForeignKey(RmGroup, related_name="groupMonitorMonitor")
+    task = models.ForeignKey(RmTask)
+    class Meta:
+        db_table = u'rm_group_monitor'
+    def __unicode__(self):
+        return u'%s' % (self.user)
+    
 
 class RmGroupTask(models.Model):
     taskee = models.ForeignKey(RmGroup, db_column='taskee', related_name="groupTaskTaskee")
@@ -104,6 +139,8 @@ class RmUserTask(models.Model):
     task = models.ForeignKey(RmTask)
     class Meta:
         db_table = u'rm_user_task'
+    def __unicode__(self):
+        return u'%s %s %s' % (self.taskee, self.tasker, self.task)
 
 class RmFollow(models.Model):
     user = models.ForeignKey(RmUser, related_name="followUser")
@@ -117,6 +154,9 @@ class RmFriend(models.Model):
     privilege_type = models.ForeignKey(RmPrivilegeType)
     class Meta:
         db_table = u'rm_friend'
+    def __unicode__(self):
+        return u'%s %s %s' % (self.user, self.friend, self.privilege_type)
+
 
 class RmTaskHistory(models.Model):
     task = models.ForeignKey(RmTask)

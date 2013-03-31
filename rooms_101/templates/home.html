@@ -1,12 +1,106 @@
 {% extends "base.html" %}
 {% block body %}
-{% if latest_poll_list %}
-    <ul>
-    {% for rm_user in latest_poll_list %}
-        <li><a href="/rm/{{ rm_user.id }}/">{{ rm_user.l_name }}</a></li>
-    {% endfor %}
+<div class="container-fluid"> 
+  <ul class="nav nav-tabs rm-nav row">
+    <li><a class="span1" href="#"><h4>Take A Tour</h4></a></li>
+    <li>
+      <ul class="nav nav-tabs nav-stacked rm-nav row">
+        <li><a href="#">To be a successful Goalbook user you should</a></li>
+        <li>
+          <ul class="nav nav-tabs rm-nav row rm-welcome-banner inline">
+            <li><a class="span1" href="#">Add A Commitment</a></li>
+            <li><a class="span2" href="#">Get Monitored By Someone</a></li>
+            <li><a class="span1" href="#">Monitor Someone</a></li>
+            <li><a class="span1" href="#">Encourage Someone</a></li>
+            <li><a class="span1" href="#">Get your Reward</a></li>
+            <li><a class="span1" href="#">Monitor A Friend</a></li>
+          </ul>
+        </li>  
+      </ul>
+    </li>
+  </ul>
+  <div class="row rm-row rm-top-bottom-border"> 
+    <ul class="nav nav-tabs inline rm-nav rm-row rm-white">
+      <li><a href="#"> Welcome to the Goalbook</a></li>
+      <li class="pull-right"><a class="active" href="#">Favorites</a></li>
+      <li class="pull-right"><a href="#About">Following</a></li>
+      <li class="pull-right"><a href="#Contact">Recent</a></li>
+      
     </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+  </div>
+</div>
+<div class="container-fluid rm-container">
+  <div class="row-fluid">
+    <div class="span2 rm-white rm-border">
+      <!--Sidebar content-->
+      <ul class="nav  nav-stacked">
+        <li><legend><a href="#">My Profile</a></legend></li>
+        <li><legend><a href="#">My Goals</a></legend></li>
+        <li>
+          <ul class=" nav nav-stacked">
+            <li><a href="#">Goal1</a></li>
+            <li><a href="#">Goal2</a></li>
+            <li><a href="#">Goal2</a></li>
+            <li><a href="#">Add Goal</a></li>
+          </ul>
+        </li>
+        <li><legend><a href="#">My To Dos</a></legend></li>
+        <li>
+          <ul class=" nav nav-stacked">
+            <li><a href="#">To Do1</a></li>
+            <li><a href="#">Add To Do</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Friends</a></li>
+        <li><a href="#">Groups</a></li>
+        <li><a href="#">Followers</a></li>
+        <li><a href="#">My Monitors</a></li>
+      </ul>
+    </div>
+    <div class="span7 rm-white rm-border">
+      <!--Body content -->
+        <ul class="row rm-row inline">
+          <li><a class="active" href="#">Add Commitment</a></li>
+          <li><a href="#">Assign Goal/To Do</a></li>
+        </ul>
+      <form class="row rm-row rm-post-input">
+        <textarea rows="2" class="input-block-level" type="text" placeholder="What is your goal?"></textarea>
+        <ul class="nav">
+          <li><button type="button" class="pull-right btn">I Commit</button></li>
+          <li><button type="submit" class="pull-right btn">All Friends</button></li>
+        </ul>
+      </form>
+      <legend>
+        <ul class="nav nav-tabs inline rm-nav rm-row rm-white">
+          <li class="pull-right"><a href="#">Recent</a></li>
+          <li class="pull-right"><a href="#">Followers</a></li>
+        </ul>
+      </legend>
+     
+      <ul class="nav nav-stacked">
+        
+      </ul>
+    </div>
+    <div class="span3 rm-white rm-border">
+      <!--Ad content-->
+      <ul class=" nav nav-stacked">
+        <li><legend><a href="#">Today</a></legend></li>
+        <li>
+          <ul class=" nav nav-stacked">
+            <li><a href="#">Linda's Goal</a></li>
+          </ul>
+        </li>
+        <li><legend><a href="#">This Week</a></legend></li>
+        <li>
+          <ul class="nav nav-stacked">
+            <li><a href="#">Your Goal Due</a></li>
+            <li><a href="#">Alice Goal Due</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+  
+<p>{{ rm_user}}</p>
 {% endblock %}

@@ -1,0 +1,137 @@
+body {
+    background-color:#f9fbfe;
+}
+img {
+    width:100%;
+    height :100%;
+}
+.tft-margin1 {
+    margin:2px;
+    padding:1px;
+}
+.tft-red-bottom-1 {
+    border-bottom: #b90000 2px solid;
+}
+.tft-red-bottom-2 {
+    border-bottom: #b90000 5px solid;
+}
+.tft-red-bottom-3 {
+    border-bottom: #b90000 10px solid;
+}
+.tft-grey-bottom-1 {
+    border-bottom: #7e7e7e 2px solid;
+}
+.tft-grey-bottom-2 {
+    border-bottom: #7e7e7e 5px solid;
+}
+.tft-grey-bottom-3 {
+    border-bottom: #7e7e7e 10px solid;
+}
+.tft-red-link a:hover {
+    color:#990000;
+    text-decoration:underline;
+}
+.rm-right-border {
+    border-right:#aaaaaa solid 1px;
+}
+.rm-left-right-border {
+    border-right:#aaaaaa solid 1px;
+    border-left:#aaaaaa solid 1px;
+}
+.rm-top-bottom-border {
+    border-top:#aaaaaa solid 1px;
+    border-bottom:#aaaaaa solid 1px;
+}
+.rm-white {
+    background-color:#fff
+}
+.rm-row {
+    overflow:hidden;
+    margin-left:1px;
+    margin-right:1px;
+    padding:0px;
+}
+.rm-container {
+    margin-top: 10px;
+}
+.rm-nav {
+    margin:1px;
+    padding:1px;
+}
+.rm-border{
+    border:#cccccc solid 1px;
+}
+.rm-welcome-banner {
+     background-color: #fefeff;
+}
+.rm-welcome-banner li{
+    text-align:center;
+    margin-right:10px;
+    padding:0px;
+    border:#bbbbbb solid 2px;
+}
+.rm-welcome-banner li:hover{
+    background-color: #eeeeee ;
+}
+.rm-post-input {
+    background-color:#fafafa;
+    width: 100%;
+    margin:auto;
+    border-bottom:#aaaaaa solid 1px;
+    padding-bottom:5px;
+}
+#tft-home-tabs {
+    margin: 0px;
+    background-color:#d5d2c4
+}
+#tft-home-tabs a{
+    color:black;
+    font-weight:bold;
+    font-size:1.1em;
+}
+
+.tft-head {
+    border-right: 1px solid #a5a294;
+    border-bottom: 3px solid #a5a294;
+    background-color:#ededed;
+    font-size:1.1em
+}
+.tft-tab-header {
+    padding-left: 20px;
+    background-color:#f0f0f0;
+}
+.tft-form-container {
+    margin:0px;
+    padding-left:0px;
+    background-color:#fcfcfc;
+}
+.tft-dropdown-container {
+    max-height:200px;
+    overflow:auto;
+}
+
+.tft-family-toggle {
+   text-align:left;
+   height:10px;
+}
+.tft-family-select {
+    float:left;
+    margin-left:5px;
+}
+#search-results {
+    margin-left:30px;
+    background-color:#fff;
+}
+.tft-label-result {
+    margin-top:10px;
+    margin-right:20px;
+}
+.tft-page-container {
+    margin-top:2px;
+    margin-bottom:2px;
+}
+
+.tft-result-container {
+    padding:10px;
+}
+
