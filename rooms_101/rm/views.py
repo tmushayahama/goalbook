@@ -1,12 +1,12 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.template import Context, loader, RequestContext
 from rm.forms import RegistrationForm, LoginForm
 
-from rm.models import RmUser, RmFriend
+from rm.models import *
 import json
 
 def index(request):
@@ -19,7 +19,7 @@ def index(request):
 
 def register_user(request):
     if request.user.is_authenticated():
-        return HttpResponseRedirect('/home')
+        return HttpResponseRedirect('/home/')
     if (request.method == 'POST'):
         form = RegistrationForm(request.POST)
         if form.is_valid():
@@ -46,7 +46,7 @@ def register_user(request):
         
 def login_user(request):
     if request.user.is_authenticated():
-        return HttpResponseRedirect('/home/')
+       return HttpResponseRedirect('/home/')
     if (request.method == 'POST'):
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -66,17 +66,28 @@ def login_user(request):
         form = LoginForm()
         context ={'form':form}
         return render(request, 'login.html', context)
-       
+
 @login_required 
 def home_page(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/login')
     rm_user = request.user.get_profile
     friends = RmFriend.objects.filter(user=rm_user)
+    goals = RmUserTask.objects.filter(taskee=rm_user)
+    goals_list = []
     friends_list = [] #create list
+    for row in goals: #populate list
+        goals_list.append({'task_name':row.task.name})
+    
     for row in friends: #populate list
         friends_list.append({'first_name':row.friend.user.first_name, 'last_name': row.friend.user.last_name})
-    results = json.dumps(friends_list) #dump list as JSON
+    
+    friends = json.dumps(friends_list) #dump list as JSON
+    goals = json.dumps(goals_list)
        # return HttpResponse(recipe_list_json, 'application/javascript')
-    context = {'rm_user':results}
+    context = {'friends':friends, 'goals':goals}
     return render(request, 'home.html', context)
+
+def logout_user (request):
+    logout(request)
+    return HttpResponseRedirect('/login')

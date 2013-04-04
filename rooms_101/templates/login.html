@@ -1,21 +1,11 @@
-<head>
-<title>Log in</title>
-<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-<style>
-body{
-font-family:Arial,Helvetica,sans-serif;
-font-size: 10px;
-}
-</style>
-</head>
-<body>
-  <form action="" method="post">
-    {% csrf_token %}
-    {% if form.errors %} 
-    <p>Please correct fields {{forms.errors}}</p>
-    {% endif %}
-    {{ form.as_p }}
-    <input type="submit" value="Register" />
-  </form>
-</body>
-</html>
+{% extends "base.html" %}
+{% block body %}
+<form id="rm-login-form" action="" method="POST" >
+  {% csrf_token %}
+  {% if form.errors %} 
+  <p>Please correct fields {{forms.errors}}</p>
+  {% endif %}
+  {{ form.as_p }}
+  <input id="rm-login-btn" type="submit" value="Login" />
+</form>
+{% endblock %}

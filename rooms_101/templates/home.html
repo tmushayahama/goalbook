@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 {% block body %}
+<script id="tft-expt-types" type="text/javascript">
+  var friends = {{ friends|safe }}
+  var goals = {{ goals|safe }}
+  console.log(friends[0]["first_name"])
+  console.log(goals)
+</script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/rm.js"></script>
 <div class="container-fluid"> 
+
   <div class="row-fluid rm-welcome-banner">
     <div class="span2">
         <img src="{{ STATIC_URL }}img/logo.png" alt="goalbook">
@@ -36,10 +44,9 @@
         <li><h4><a href="#">My Profile</a></h4></li>
         <li><h4><a href="#">My Goals</a></h4></li>
         <li>
+          <ul id="rm-goals-home" class=" nav nav-stacked">
+          </ul>
           <ul class=" nav nav-stacked">
-            <li><a href="#">Goal1</a></li>
-            <li><a href="#">Goal2</a></li>
-            <li><a href="#">Goal2</a></li>
             <li><a href="#">Add Goal</a></li>
           </ul>
         </li>
@@ -68,9 +75,9 @@
           <li><button type="button" class="pull-right btn btn-primary">I Commit</button></li>
           <li class="pull-right btn dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Friends <b class="caret"></b></a>
-            <ul class="rm-topmost dropdown-menu">
+            <ul class="dropdown-menu">
               <li class="nav-header">Who can see this</li>
-              <li class="controls span2">
+              <li class="controls">
                 <label class="checkbox">
                   <input type="checkbox" value="option1"> Select All
                 </label>
@@ -118,6 +125,4 @@
     </div>
   </div>
 </div>
-  
-<p>{{ rm_user}}</p>
 {% endblock %}

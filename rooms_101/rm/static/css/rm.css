@@ -5,11 +5,9 @@ img {
     width:100%;
     height :100%;
 }
-.rm-topmost {
-    z-index:50;
-}
 .rm-navbar .brand {
-    padding:5px 100px 3px 100px;
+    padding:5px 100px 0px 100px;
+    border-right:#cccccc solid 2px;
 }
 .navbar-inner {
     background-color: #a4b9cc; 
@@ -19,7 +17,7 @@ img {
 }
 .navbar .nav{
     padding-top:5px;
-    padding-bottom:3px;
+    padding-bottom:0px;
 }
 .navbar .nav > li > a {
     text-shadow: none;
@@ -33,13 +31,11 @@ img {
 
 .rm-img-symbol{
     padding-top:0px;
-    padding-left:10px;
-    padding-right:10px;
 }
 .rm-img-symbol img{
     margin:0px;
     height:30px;
-    width:50px;
+    width:35px;
 }
 .rm-active {
     border-top: #aaaaaa 1px solid;
