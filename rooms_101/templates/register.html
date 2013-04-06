@@ -1,21 +1,51 @@
-<head>
-<title>register</title>
-<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-<style>
-body{
-font-family:Arial,Helvetica,sans-serif;
-font-size: 10px;
-}
-</style>
-</head>
-<body>
-  <form action="" method="post">
-    {% csrf_token %}
-    {% if form.errors %} 
+{% extends "base1.html" %}
+{% block body %}
+<script type="text/javascript">
+  $("#rm-sign-in-switch")
+  .attr("href", "/login")
+  .text("Sign In");
+</script>
+<div class="row rm-login-heading">
+  <div class="span2">
+    <img src="{{ STATIC_URL }}img/logo.png" alt="">
+  </div>
+  <h4 class="span4">Sign Up</h4>
+</div>
+<form action="" method="POST" >
+  {% csrf_token %}
+  {% if form.errors %} 
+  <div class="alert alert-error">
     <p>Please correct fields {{forms.errors}}</p>
-    {% endif %}
-    {{ form.as_p }}
-    <input type="submit" value="Register" />
-  </form>
-</body>
-</html>
+  </div>
+  {% endif %}
+  <div class="control-group form-inline">
+    <div class="controls">
+      {{ form.first_name }}
+      {{ form.last_name }}
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      {{ form.email }}
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      {{ form.password }}
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <div class="controls">
+      {{ form.verify_password }}
+    </div>
+  </div>
+ <div class="control-group">
+    <div class="controls">
+      {{ form.gender }}
+    </div>
+  </div>
+          
+  <input class="btn btn-primary btn-medium pull-right" type="submit" value="Create Account" />
+</form>
+{% endblock %}

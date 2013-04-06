@@ -5,12 +5,17 @@ img {
     width:100%;
     height :100%;
 }
+.img-post {
+    width:60px;
+    height:60px
+}
 .rm-navbar .brand {
     padding:5px 100px 0px 100px;
     border-right:#cccccc solid 2px;
 }
 .navbar-inner {
-    background-color: #a4b9cc; 
+    background-color:#596167;
+   /* background-color: #a4b9cc; */
     background-image: none;
     background-repeat: no-repeat;
     filter: none;
@@ -21,14 +26,13 @@ img {
 }
 .navbar .nav > li > a {
     text-shadow: none;
-    color:  #002244;
+    color:  #fff;
     font-weight:bold;
 }
 .navbar .nav > li > img {
     height:30px;
     width:40px;
 }
-
 .rm-img-symbol{
     padding-top:0px;
 }
@@ -36,6 +40,12 @@ img {
     margin:0px;
     height:30px;
     width:35px;
+}
+.rm-img-symbol-big img{
+    margin:0px;
+    padding:0px;
+    height:60px;
+    width:65px;
 }
 .rm-active {
     border-top: #aaaaaa 1px solid;
@@ -49,9 +59,28 @@ img {
 .rm-active a:hover {
     text-decoration:none;
 }
-.tft-margin1 {
-    margin:2px;
-    padding:1px;
+.rm-product-info-box {
+    margin:50px 5px 5px 100px;
+    padding:0px 5px 5px 5px;
+    border:#f0f0f0 solid 10px;
+    overflow:hidden;
+}
+.rm-product-info-box li {
+    margin-bottom:10px;
+    border-bottom:#00b0f0 solid 1px;
+}
+
+.rm-login-container {
+    margin:50px 5px 5px 5px;
+    padding:0px 5px 5px 5px;
+    border:#cccccc solid 1px;
+    overflow:hidden;
+}
+.rm-login-heading {
+    margin-bottom:5px;
+    text-align:center;
+    background-color:#fff;
+    border-bottom:#dadada solid 2px;
 }
 .tft-red-bottom-1 {
     border-bottom: #b90000 2px solid;
@@ -96,7 +125,7 @@ img {
     margin-top: 10px
 }
 .rm-nav {
-    margin:0px;
+    margin-bottom:0px;
     padding:0px;
 }
 
@@ -104,10 +133,9 @@ img {
     border:#cccccc solid 1px;
 }
 .rm-welcome-banner {
-    margin-top:5px;
+    margin-top:0px;
     margin-bottom:5px;
     background-color: #fff;
-    border:#cccccc solid 1px;
 }
 .rm-welcome-banner li{
     text-align:left;
@@ -141,6 +169,7 @@ img {
     margin:0px;
 }
 .rm-welcome-nav {
+    margin-left:0px;
     background-color:#fff;
     max-height: 40px;
 }

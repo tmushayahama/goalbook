@@ -3,34 +3,33 @@
 <script id="tft-expt-types" type="text/javascript">
   var friends = {{ friends|safe }}
   var goals = {{ goals|safe }}
-  console.log(friends[0]["first_name"])
+  console.log(friends)
   console.log(goals)
 </script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/rm.js"></script>
 <div class="container-fluid"> 
-
   <div class="row-fluid rm-welcome-banner">
     <div class="span2">
-        <img src="{{ STATIC_URL }}img/logo.png" alt="goalbook">
+      <img src="{{ STATIC_URL }}img/logo.png" alt="goalbook">
     </div>
-    <div class="span10 rm-nav-quickstart">
-      <p>GoalBook: Quick Guide</p>
-      <ul class="nav rm-nav nav-pills inline">
-        <li><a href="#">Take a Quick Tour</a></li>
-        <li><a href="#">Share your Commitments</a></li>
-        <li><a href="#">Get Monitored by a Friend</a></li>
-        <li><a href="#">Assign A Commitment</a></li>
-        <li><a href="#">Challenge A friend</a></li>
-        <li><a href="#">Enjoy your Accomplishments</a></li>
-      </ul>
-    </div>
+    
+    <!--   <div class="span10 rm-nav-quickstart">
+           <ul class="nav pull-right rm-nav nav-pills inline">
+             <li><a href="#">Take a Quick Tour</a></li>
+             <li><a href="#">Share your Commitments</a></li>
+             <li><a href="#">Get Monitored by a Friend</a></li>
+             <li><a href="#">Assign A Commitment</a></li>
+             <li><a href="#">Challenge A friend</a></li>
+             <li><a href="#">Enjoy your Accomplishments</a></li>
+           </ul>
+    </div> -->
   </div>
-  <div class=" rm-welcome-nav row rm-row rm-top-bottom-border"> 
+  <div class="rm-welcome-nav row rm-top-bottom-border"> 
     <ul class="nav nav-tabs inline rm-nav rm-row">
       <li>
         <img src="{{ STATIC_URL }}img/rm_avatar.jpg" alt="">
       </li>
-      <li><a href="#"> Welcome to the Goalbook</a></li>
+      <li><a href="#">{{user.first_name}} &nbsp;{{user.last_name}}</a></li>
       <li class="pull-right"><a href="#">Help</a></li>
       <li class="pull-right"><a href="#About">Features</a></li>
     </ul>
@@ -38,16 +37,14 @@
 </div>
 <div class="container-fluid rm-container">
   <div class="row-fluid">
-    <div class="span2 rm-sidebar rm-white rm-border">
+    <div class="span2 rm-sidebar rm-border">
       <!--Sidebar content-->
       <ul class="nav nav-stacked">
         <li><h4><a href="#">My Profile</a></h4></li>
         <li><h4><a href="#">My Goals</a></h4></li>
         <li>
-          <ul id="rm-goals-home" class=" nav nav-stacked">
-          </ul>
-          <ul class=" nav nav-stacked">
-            <li><a href="#">Add Goal</a></li>
+          <ul id="rm-goals-home" class="nav nav-stacked">
+            <li><a class="text-right" href="#">Add Goal</a></li>
           </ul>
         </li>
         <li><h4><a href="#">My To Dos</a></h4></li>
@@ -95,13 +92,51 @@
           </li>
         </ul>
       </form>
-      <div class="row-fluid ">
+      <div class="row rm-row rm-container">
         <ul class="row rm-nav rm-row inline">
-          <li class="pull-right"><a href="#">Followers</a></li>
+          <li class="pull-right"><a href="#">Following</a></li>
           <li class="rm-active pull-right"><a href="#">Recent</a></li>
         </ul>
-        <ul class="nav nav-stacked rm-content rm-border">
-          rr
+        <ul class="row nav nav-tabs rm-border inline">
+          <li class="span1 img-post">
+            <img src="{{ STATIC_URL }}img/rm_avatar.jpg" alt="">
+          </li>
+          <li class="span11">
+            <ul class="nav nav-tabs nav-stacked"> 
+              <li>
+                <ul class="nav rm-nav nav-tabs inline">
+                  <li>
+                    <ul class="nav rm-nav inline">
+                      <li><a>Linda Nolie</a></li>
+                    </ul>
+                  </li>
+                  <li class="pull-right">
+                    <ul class=" rm-nav nav inline">
+                      <li><a class="pull-right">4/24/13 - 5/12/13</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li><p>I want to get a finish this project by May. This might be the next best thing</p></li>
+              <li>
+                <ul class="nav nav-tabs inline">
+                  <li>
+                    <ul class="nav inline">
+                      <li><a>Follow</a></li>
+                      <li><a>Monitor</a></li>
+                      <li><a>Encourage</a></li>
+                    </ul>
+                  </li>
+                  <li class="pull-right">
+                    <ul class="nav inline">
+                      <li><a>Hide</a></li>
+                      <li><a>Report</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>

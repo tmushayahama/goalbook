@@ -16,7 +16,7 @@
     
   </head>
   <body>
-    <div id="header">
+    <div id="rm-header">
       <div class="navbar rm-navbar navbar-top rm-nav">
         <div class="navbar-inner">
           <div class="container">
@@ -26,36 +26,38 @@
               <span class="icon-bar"></span>
             </a>
             <a class="brand rm-img-symbol">
-              <img src="{{ STATIC_URL }}img/logo_symbol_blue.png" alt="">
+              <img src="{{ STATIC_URL }}img/logo_symbol_blue.png" class="img-circle" alt="">
             </a>
+            <ul class="nav inline nav-pills rm-shadowless">
+              <li><a href="#">Home</a></li>
+              <li>
+                <img src="{{ STATIC_URL }}img/rm_avatar.jpg" alt="">
+              </li>
+            </ul>
             <div class="nav-collapse collapse">
-              <ul class="nav">
-                <li>
-                  <div class="input-prepend">
-                    <input class="span5" id="inputIcon" type="text" placeholder="Search">
-                    <span class="add-on"><i class="icon-envelope"></i></span>
-                  </div>
-                </li>
-	      </ul>
+              
               <ul class="nav inline nav-pills rm-shadowless pull-right">
-                <li>
-                  <img src="{{ STATIC_URL }}img/rm_avatar.jpg" alt="">
-                </li>
-                <li><a href="#">{{user.first_name}} &nbsp;{{user.last_name}}</a></li>
-	        <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">How To  <b class="caret"></b></a>
+               
+                <ul class="nav">
+                  <li>
+                    <div class="input-prepend">
+                      <input class="span5" id="inputIcon" type="text" placeholder="Search">
+                      <span class="add-on"><i class="icon-envelope"></i></span>
+                    </div>
+                  </li>
+	        </ul>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a href="#">Build your search</a></li>
-                    <li><a href="#">Connect to PubMed </a></li>
+                    <li class="nav-header">User Settings</li>
+                    <li><a href="#">Account Settings</a></li>
+                    <li><a href="#">Privacy Settings </a></li>
                     <li class="divider"></li>
-                    <li class="nav-header">Export Data</li>
-                    <li><a href="#">to csv file format</a></li>
-                    <li><a href="#">to html file format</a></li>
+                    <li class="nav-header">Commitments</li>
+                    <li><a href="#">Reports</a></li>
                   </ul>
                 </li>
-                <li class="pull-right"><a href="#About">About</a></li>
-                <li class="pull-right"><a href="#Contact">Contact Us</a></li>
-                <li class="pull-right"><a href="/logout">Logout</a></li>
+                <li><a href="/logout">Logout</a></li>
               </ul>
             </div><!--/.nav-collapse -->
           </div>

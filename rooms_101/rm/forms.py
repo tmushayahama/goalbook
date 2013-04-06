@@ -3,21 +3,32 @@ from django.contrib.auth.models import User
 from django.forms import ModelForm
 from rm.models import RmUser
 
+
+   
 class RegistrationForm(ModelForm):
+    GENDER = (
+        ('', 'Select-One'),
+        ('F', "Male"),
+        ('M', "Femail"), 
+        )
+
     first_name = forms.CharField(label=u"First Name",
-        widget=forms.TextInput(attrs={'class': 'input input-text'}),
+        widget=forms.TextInput(attrs={'class': 'input input-text span2', 'placeholder': 'First Name'}),
         required=True)
     last_name = forms.CharField(label=u"last Name",
-        widget=forms.TextInput(attrs={'class': 'input input-text'}),
+        widget=forms.TextInput(attrs={'class': 'input input-text pull-right span2', 'placeholder': 'Last Name'}),
         required=True)
     email = forms.EmailField(label=u"Your Email",
-        widget=forms.TextInput(attrs={'class': 'input input-text'}),
+        widget=forms.TextInput(attrs={'class': 'input input-text  input-block-level', 'placeholder': 'Your Email'}),
         required=True)
     password = forms.CharField(label=u"Your New Password",
-        widget=forms.PasswordInput(render_value=False, attrs={'class': 'input input-text'}),
+        widget=forms.PasswordInput(render_value=False, attrs={'class': 'input input-text input-block-level', 'placeholder': 'New password'}),
         required=True)
     verify_password = forms.CharField(label=u"Verify Password",
-        widget=forms.PasswordInput(render_value=False, attrs={'class': 'input input-text'}),
+        widget=forms.PasswordInput(render_value=False, attrs={'class': 'input input-text  input-block-level', 'placeholder': 'Verify password'}),
+        required=True)
+    gender = forms.ChoiceField(label=u"Your Gender", choices=GENDER,
+        widget=forms.Select(attrs={'class': 'input input-text  input-block-level', 'placeholder': 'Your Gender'}),
         required=True)
     
     class Meta:
@@ -41,8 +52,8 @@ class RegistrationForm(ModelForm):
 
 class LoginForm(forms.Form):
     email = forms.EmailField(label=u"Your Email",
-        widget=forms.TextInput(attrs={'class': 'input input-text'}),
+        widget=forms.TextInput(attrs={'class': 'input input-text input-block-level', 'placeholder': 'Your email'}),
         required=True)
     password = forms.CharField(label=u"Your New Password",
-        widget=forms.PasswordInput(render_value=False, attrs={'class': 'input input-text'}),
+        widget=forms.PasswordInput(render_value=False, attrs={'class': 'input input-text input-block-level', 'placeholder': 'Your password'}),
         required=True)

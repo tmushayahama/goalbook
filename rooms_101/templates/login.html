@@ -1,11 +1,33 @@
-{% extends "base.html" %}
+{% extends "base1.html" %}
 {% block body %}
+<script type="text/javascript">
+    $("#rm-sign-in-switch")
+    .attr("href", "/register")
+    .text("Create An Account");
+  </script>
+<div class="row rm-login-heading">
+  <div class="span2">
+    <img src="{{ STATIC_URL }}img/logo.png" alt="">
+  </div>
+  <h4 class="span4">Login</h4>
+</div>
 <form id="rm-login-form" action="" method="POST" >
   {% csrf_token %}
   {% if form.errors %} 
-  <p>Please correct fields {{forms.errors}}</p>
+  <div class="alert alert-error">
+    <p>Please correct fields {{forms.errors}}</p>
+  </div>
   {% endif %}
-  {{ form.as_p }}
-  <input id="rm-login-btn" type="submit" value="Login" />
+  <div class="control-group">
+    <div class="controls">
+      {{ form.email }}
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      {{ form.password }}
+    </div>
+  </div>
+  <input class="btn btn-primary btn-medium pull-right" type="submit" value="Login" />
 </form>
 {% endblock %}

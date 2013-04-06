@@ -34,7 +34,10 @@ def register_user(request):
             #user= request.user.get_profile();
             rm_user = RmUser(user=user)
             rm_user.save()
-            return HttpResponseRedirect('/home')
+            user = authenticate(username=form.cleaned_data['email'], password=form.cleaned_data['password'])
+            if user is not None:
+                login(request, user)
+                return HttpResponseRedirect('/home/')
         else:
             context ={'form':form}
             return render(request, 'register.html', context)
