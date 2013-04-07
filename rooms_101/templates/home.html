@@ -24,52 +24,53 @@
            </ul>
     </div> -->
   </div>
-  <div class="rm-welcome-nav row rm-top-bottom-border"> 
-    <ul class="nav nav-tabs inline rm-nav rm-row">
-      <li>
+  <div class="rm-welcome-nav row-fluid">   
+    <ul class="span12 inline">
+      <li class="span4 inline">
         <img src="{{ STATIC_URL }}img/rm_avatar.jpg" alt="">
+        <a href="/profile">{{user.first_name}} &nbsp;{{user.last_name}}</a>
       </li>
-      <li><a href="#">{{user.first_name}} &nbsp;{{user.last_name}}</a></li>
-      <li class="pull-right"><a href="#">Help</a></li>
-      <li class="pull-right"><a href="#About">Features</a></li>
+      <li class="span8">
+        <ul class="pull-right nav rm-nav inline nav-pills">
+          <li><a>Help</a></li>
+          <li><a>Features</a></li>
+        </ul>
+      </li>
     </ul>
   </div>
 </div>
 <div class="container-fluid rm-container">
   <div class="row-fluid">
-    <div class="span2 rm-sidebar rm-border">
+    <div class="span2 rm-sidebar rm-green-border">
       <!--Sidebar content-->
       <ul class="nav nav-stacked">
-        <li><h4><a href="#">My Profile</a></h4></li>
-        <li><h4><a href="#">My Goals</a></h4></li>
+        <li><h5><a href="#">My Profile</a></h5></li>
+        <li><h5><a href="#">Commitments</a></h5></li>
         <li>
           <ul id="rm-goals-home" class="nav nav-stacked">
-            <li><a class="text-right" href="#">Add Goal</a></li>
           </ul>
         </li>
-        <li><h4><a href="#">My To Dos</a></h4></li>
+        <li><h5><a href="#">Goal List</a></h5></li>
         <li>
           <ul class=" nav nav-stacked">
-            <li><a href="#">To Do1</a></li>
-            <li><a href="#">Add To Do</a></li>
           </ul>
         </li>
-        <li><h4><a href="#">Friends</a></h4></li>
-        <li><h4><a href="#">Groups</a></h4></li>
-        <li><h4><a href="#">Followers</a></h4></li>
-        <li><h4><a href="#">My Monitors</a></h4></li>
+        <li><h5><a href="#">Friends</a></h5></li>
+        <li><h5><a href="#">Groups</a></h5></li>
+        <li><h5><a href="#">Followers</a></h5></li>
+        <li><h5><a href="#">My Monitors</a></h5></li>
       </ul>
     </div>
     <div class="span7">
       <!--Body content -->
-      <ul class="row rm-nav rm-row inline">
+      <ul class="row rm-nav rm-row inline rm-green-border">
         <li class="rm-active"><a href="#">Add Commitment</a></li>
         <li><a href="#">Assign Goal/To Do</a></li>
       </ul>
       <form class="row rm-row rm-post-input">
         <textarea rows="2" class="input-block-level rm-borderless" type="text" placeholder="What is your goal?"></textarea>
         <ul class="nav">
-          <li><button type="button" class="pull-right btn btn-primary">I Commit</button></li>
+          <li><button type="button" class="pull-right btn btn-success">I Commit</button></li>
           <li class="pull-right btn dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Friends <b class="caret"></b></a>
             <ul class="dropdown-menu">
@@ -97,38 +98,38 @@
           <li class="pull-right"><a href="#">Following</a></li>
           <li class="rm-active pull-right"><a href="#">Recent</a></li>
         </ul>
-        <ul class="row nav nav-tabs rm-border inline">
+        <ul class="rm-post row nav nav-tabs rm-green-border inline">
           <li class="span1 img-post">
-            <img src="{{ STATIC_URL }}img/rm_avatar.jpg" alt="">
+            <img src="{{ STATIC_URL }}img/rm_avatar.jpg" class="img-polaroid" alt="">
           </li>
           <li class="span11">
-            <ul class="nav nav-tabs nav-stacked"> 
+            <ul class="nav nav-stacked"> 
               <li>
-                <ul class="nav rm-nav nav-tabs inline">
+                <ul class="rm-nav inline">
                   <li>
-                    <ul class="nav rm-nav inline">
-                      <li><a>Linda Nolie</a></li>
+                    <ul class="rm-nav inline">
+                      <li><a><h4>Linda Nolie</h4></a></li>
                     </ul>
                   </li>
                   <li class="pull-right">
-                    <ul class=" rm-nav nav inline">
-                      <li><a class="pull-right">4/24/13 - 5/12/13</a></li>
+                    <ul class="rm-nav inline">
+                      <li><a class="pull-right"><h4>4/24/13 - 5/12/13</h4></a></li>
                     </ul>
                   </li>
                 </ul>
               </li>
-              <li><p>I want to get a finish this project by May. This might be the next best thing</p></li>
+              <li class="rm-post-text"><p>I want to get a finish this project by May. This might be the next best thing</p></li>
               <li>
-                <ul class="nav nav-tabs inline">
+                <ul class="inline">
                   <li>
-                    <ul class="nav inline">
+                    <ul class=" inline">
                       <li><a>Follow</a></li>
                       <li><a>Monitor</a></li>
                       <li><a>Encourage</a></li>
                     </ul>
                   </li>
                   <li class="pull-right">
-                    <ul class="nav inline">
+                    <ul class=" inline">
                       <li><a>Hide</a></li>
                       <li><a>Report</a></li>
                     </ul>
@@ -140,16 +141,16 @@
         </ul>
       </div>
     </div>
-    <div class="span3 rm-sidebar rm-white rm-border">
+    <div class="span3 rm-sidebar rm-green-border">
       <!--Ad content-->
       <ul class=" nav nav-stacked">
-        <li><h4><a href="#">Today</a></h4></li>
+        <li><h5><a href="#">Today</a></h5></li>
         <li>
           <ul class=" nav nav-stacked">
             <li><a href="#">Linda's Goal</a></li>
           </ul>
         </li>
-        <li><h4><a href="#">This Week</a></h4></li>
+        <li><h5><a href="#">This Week</a></h5></li>
         <li>
           <ul class="nav nav-stacked">
             <li><a href="#">Your Goal Due</a></li>

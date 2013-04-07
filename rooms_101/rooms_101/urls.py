@@ -21,6 +21,7 @@ urlpatterns = patterns('',
                        url(r'^logout/$', 'rm.views.logout_user'),
                        url(r'^home/$', 'rm.views.home_page'),
                        url(r'^register/$', 'rm.views.register_user'),
+                       url(r'^profile/$', 'rm.views.profile_page'),
                        #url(r'^(?P<name>.*)/$', 'rm.views.'),
 )
 if settings.DEBUG:

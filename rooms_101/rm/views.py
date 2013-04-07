@@ -91,6 +91,13 @@ def home_page(request):
     context = {'friends':friends, 'goals':goals}
     return render(request, 'home.html', context)
 
+@login_required 
+def profile_page(request):
+    if request.user.is_authenticated():
+        #return HttpResponseRedirect('/profile')
+        return render(request, 'profile.html')
+
+
 def logout_user (request):
     logout(request)
     return HttpResponseRedirect('/login')

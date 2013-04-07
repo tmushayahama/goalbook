@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block body %}
+<script id="tft-expt-types" type="text/javascript">
+ /* var friends = {{ friends|safe }}
+  var goals = {{ goals|safe }}
+  console.log(friends)
+  console.log(goals)*/
+</script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/rm_profile.js"></script>
+<div class="container-fluid">  
+  <ul class="row-fluid nav nav-tabs rm-green-border inline rm-profile-header">
+    <li class="span2">
+        <img src="{{ STATIC_URL }}img/rm_avatar.jpg" class="img-polaroid" alt="">
+    </li>
+    <li class="span10">
+      <ul class="nav nav-stacked"> 
+        <li>
+          <ul class="rm-nav rm-name-header inline">
+            <li>
+              <ul class="rm-nav inline">
+                <li><a><h3>Linda Nolie</h3></a></li>
+              </ul>
+            </li>
+            <li class="pull-right">
+              <ul class="rm-nav inline">
+                <li><a class="pull-right"><h4></h4></a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="rm-goal-preview">
+          <ul class="nav pull-right rm-nav nav-pills inline span12">
+            <li class="span2"><a href="#">Finish this project by May</a></li>
+            <li class="span2"><a href="#">Getting an Internship for summer</a></li>
+            <li class="span2"><a href="#">Fall in love with... hehe</a></li>
+            <li class="span2"><a href="#">Be closer to God </a></li>
+          </ul>
+        </li>
+        <li>
+          <ul class="nav nav-pills">
+            <li class="active"><a href="#">Activity</a></li>
+            <li><a href="#">Info</a></li>
+            <li><a href="#">Commitments</a></li>
+            <li><a href="#">Goal List</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+ 
+{% endblock %}

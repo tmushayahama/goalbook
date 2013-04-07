@@ -1,13 +1,16 @@
 body {
-    background-color:#fdfdff;
+    background-color:#fcfffc;
 }
 img {
     width:100%;
     height :100%;
 }
+a {
+    color:#006699;
+}
 .img-post {
     width:60px;
-    height:60px
+    height:50px;
 }
 .rm-navbar .brand {
     padding:5px 100px 0px 100px;
@@ -28,6 +31,7 @@ img {
     text-shadow: none;
     color:  #fff;
     font-weight:bold;
+    font-size:1.3em;
 }
 .navbar .nav > li > img {
     height:30px;
@@ -132,6 +136,10 @@ img {
 .rm-border{
     border:#cccccc solid 1px;
 }
+.rm-green-border{
+    border:#d5ddbb solid 1px;
+}
+
 .rm-welcome-banner {
     margin-top:0px;
     margin-bottom:5px;
@@ -172,6 +180,8 @@ img {
     margin-left:0px;
     background-color:#fff;
     max-height: 40px;
+    border-top:#c7e1ba solid 1px;
+    border-bottom:#456789 solid 2px;
 }
 .rm-welcome-nav img{
     height: 38px;
@@ -181,27 +191,37 @@ img {
 .rm-sidebar {
     background-color:#fff;
 }
-.rm-sidebar h4 {
-    padding: 3px;
-    margin: 1px;
-    border-bottom:#eaeaea solid 1px;
-    font-weight:bold;
+.rm-sidebar h5 {
+    padding: 1px 0px 2px 1px;
+    margin-bottom: 2px;
+    border-bottom:#eafaea solid 1px;
 }
-.rm-sidebar h4 a {
-    color:#909090;
+.rm-sidebar li h5 a {
+    color:#003f2d;
+    text-transform:uppercase;
+    font-size:0.9em;
+    font-weight:bold;
 }
 .rm-sidebar ul{
     padding-left:10px;
 }
 .rm-sidebar ul a{
-    color:#576267;
+    color:#333333;
 }
 .rm-post-input {
-    background-color:#f0f0f0;
+    background-color:#e5eecc;
     margin-bottom:10px;
-    border:#aaaaaa solid 1px;
+    border:#40a240 solid 1px;
     padding-bottom:5px;
 }
+.rm-post {
+    background-color:#fff;
+    padding:5px;
+}
+.rm-post-text {
+    padding-left:10px;
+}
+
 .rm-borderless {
     border-width:0px;
 }
@@ -260,3 +280,20 @@ img {
     padding:10px;
 }
 
+/*=======PROFILE=======*/
+.rm-profile-header {
+}
+.rm-name-header {
+    background-color:#fff;
+    max-height: 40px;
+    border-top:#c7e1ba solid 1px;
+    border-bottom:#c7e1ba solid 2px;
+    padding-bottom:10px;
+}
+.rm-goal-preview {
+    background-color:#fff;
+    border-bottom:#456789 solid 2px;
+    height: 120px;
+    margin-bottom:5px;
+    overflow:auto;
+}
