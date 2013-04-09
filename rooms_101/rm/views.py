@@ -92,10 +92,13 @@ def home_page(request):
     return render(request, 'home.html', context)
 
 @login_required 
-def profile_page(request):
+def profile_page(request, username):
     if request.user.is_authenticated():
         #return HttpResponseRedirect('/profile')
-        return render(request, 'profile.html')
+        rm_user = request.user
+        if username == rm_user.username:
+            context = {'authorization':'owner'}
+            return render(request, 'profile.html', context)
 
 
 def logout_user (request):

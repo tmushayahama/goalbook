@@ -28,7 +28,7 @@
     <ul class="span12 inline">
       <li class="span4 inline">
         <img src="{{ STATIC_URL }}img/rm_avatar.jpg" alt="">
-        <a href="/profile">{{user.first_name}} &nbsp;{{user.last_name}}</a>
+        <a href="/profile/{{ user.username }}">{{user.first_name}} &nbsp;{{user.last_name}}</a>
       </li>
       <li class="span8">
         <ul class="pull-right nav rm-nav inline nav-pills">
@@ -44,7 +44,7 @@
     <div class="span2 rm-sidebar rm-green-border">
       <!--Sidebar content-->
       <ul class="nav nav-stacked">
-        <li><h5><a href="#">My Profile</a></h5></li>
+        <li><h5><a href="/profile/{{ user.username }}">My Profile</a></h5></li>
         <li><h5><a href="#">Commitments</a></h5></li>
         <li>
           <ul id="rm-goals-home" class="nav nav-stacked">
@@ -108,7 +108,7 @@
                 <ul class="rm-nav inline">
                   <li>
                     <ul class="rm-nav inline">
-                      <li><a><h4>Linda Nolie</h4></a></li>
+                      <li><a href="/profile/heyla@gmail.com"><h4>Linda Nolie</h4></a></li>
                     </ul>
                   </li>
                   <li class="pull-right">

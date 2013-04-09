@@ -7,47 +7,191 @@
   console.log(goals)*/
 </script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/rm_profile.js"></script>
-<div class="container-fluid">  
-  <ul class="row-fluid nav nav-tabs rm-green-border inline rm-profile-header">
-    <li class="span2">
-        <img src="{{ STATIC_URL }}img/rm_avatar.jpg" class="img-polaroid" alt="">
-    </li>
-    <li class="span10">
-      <ul class="nav nav-stacked"> 
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span9">
+      <div class="container-fluid"> 
+        <ul class="nav row-fluid nav-tabs rm-green-border inline rm-profile-header">
+          <li class="span3">
+            <img src="{{ STATIC_URL }}img/rm_avatar.jpg" class="img-polaroid" alt="">
+          </li>
+          <li class="span9">
+            <ul class="nav nav-stacked"> 
+              <li>
+                <ul class="rm-nav rm-name-header inline">
+                  <li>
+                    <ul class="rm-nav inline">
+                      <li><a><h3>{{ user.first_name }} &nbsp; {{ user.last_name }}</h3></a></li>
+                    </ul>
+                  </li>
+                  <li class="pull-right">
+                    <ul class="rm-nav inline">
+                      <li><a class="pull-right"><h4></h4></a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li class="rm-goal-preview">
+                <ul class="nav pull-right rm-nav nav-pills inline span12">
+                  <li class="span3"><a href="#">This is my first goal</a></li>
+                  <li class="span3"><a href="#">This is my third goal</a></li>
+                  <li class="span3"><a href="#">This is my tenth goal</a></li>
+                  <li class="span3"><a href="#">This is my second goal</a></li>
+                </ul>
+              </li>
+              <li>
+                <ul id="rm-profile-tab" class="nav nav-pills">
+                  <li class="active"><a href="#rm-profile-activity">Activity</a></li>
+                  <li><a href="#rm-profile-info">Info</a></li>
+                  <li><a href="#rm-profile-goal-info">Goal Info</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <div class="row-fluid">
+          <div class="rm-green-border rm-sidebar span3">
+            <ul class="nav nav-stacked">
+              <li>
+                <ul class="nav nav-tabs inline">
+                  <li><h6><a>Welcome Quotation</a></h6></li>
+                  <li class="pull-right"><a class="btn btn-mini">Edit</a></li>
+                </ul>
+              </li>
+              <li>
+                <ul class="nav nav-pills inline">
+                  <li><a><blockquote>
+                        “If you have no one to encourage you, instead of using that as an excuse for failure, encourage yourself and use that as a reason why you must succeed.”<small><cite title="Source Title">Kevin Ngo</cite></small>
+                    </blockquote></a>
+                  </li>
+                </ul>
+              </li>
+              <li><h5><a href="#">Goal List</a></h5></li>
+              <li>
+                <ol>
+                  <li><a href="#">This is my firstjijijij uuuj ujuj  goal</a></li>
+                  <li><a href="#">This is my second goal</a></li>
+                  <li><a href="#">This is my third goal</a></li>
+                  <li><a href="#">This is my fourth goal</a></li>
+                  <li><a href="#">This is my fifth goal</a></li>
+                  <li><a href="#">This is my sixth goal</a></li>
+                  <li><a href="#">This is my seventh goal</a></li>
+                  <li><a href="#">This is my eight goal</a></li>
+                </ol>
+              </li>
+            </ul>
+          </div>
+          <div class="span9">
+            <div class="tab-content">
+              <div class="tab-pane rm-green-border active" id="rm-profile-activity">
+                <ul class="rm-post row nav nav-tabs rm-green-border inline">
+                  <li class="span1 img-post">
+                    <img src="{{ STATIC_URL }}img/rm_avatar.jpg" class="img-polaroid" alt="">
+                  </li>
+                  <li class="span11">
+                    <ul class="nav nav-stacked"> 
+                      <li>
+                        <ul class="rm-nav inline">
+                          <li>
+                            <ul class="rm-nav inline">
+                              <li><a><h4>Linda Nolie</h4></a></li>
+                            </ul>
+                          </li>
+                          <li class="pull-right">
+                            <ul class="rm-nav inline">
+                              <li><a class="pull-right"><h4>4/24/13 - 5/12/13</h4></a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="rm-post-text"><p>I want to get a finish this project by May. This might be the next best thing</p></li>
+                      <li>
+                        <ul class="inline">
+                          <li>
+                            <ul class=" inline">
+                              <li><a>Follow</a></li>
+                              <li><a>Monitor</a></li>
+                              <li><a>Encourage</a></li>
+                            </ul>
+                          </li>
+                          <li class="pull-right">
+                            <ul class=" inline">
+                              <li><a>Hide</a></li>
+                              <li><a>Report</a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="tab-pane" id="rm-profile-info">
+                <div class="span6">
+                  <ul class="nav nav-tabs inline">
+                    <li><h4>About Me</h4></li>
+                    <li class="pull-right"><a class="btn btn-mini">Edit</a></li>
+                  </ul>
+                  <p class="rm-green-border">hdh djds iiis fuhfsd ijfsdfhsd iid jdfsdfisdf ivsfi vsdvisdvisdivvvmv
+                    sfgvdvsfujsfvdfv ffu fufr fffi frf rfhhg rrg rrjg rgijr riiiie dap rpari r
+                    arfe f f rfr
+                  </p>
+                </div>
+                <div class="span6">
+                  <ul class="nav nav-tabs inline">
+                    <li><h4>My Info</h4></li>
+                    <li class="pull-right"><a class="btn btn-mini">Edit</a></li>
+                  </ul>
+                  <dl class="dl-horizontal rm-green-border">
+                    <dt>Birthday</dt>
+                    <dd>August 17, 2000</dd>
+                    <dt>Gender</dt>
+                    <dd>Male</dd>
+                    <br>
+                    <dt>Contact Info</dt>
+                    <dd><address>
+                        1578 Neil Avenue<br>
+                        Columbus, OH 43210<br>
+                        <abbr title="Phone"></abbr> (614) 329-4344
+                      </address>
+                      <address>
+                        <strong>{{ user.first_name }} &nbsp; {{ user.last_name }}</strong><br>
+                        <a href="mailto:#">{{ user.username }}</a>
+                      </address>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+              <div class="tab-pane" id="rm-profile-goal-info">
+                <div class="span3">
+                  <h3>Goal List</h3>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="span3 rm-sidebar rm-green-border">
+      <!--Ad content-->
+      <ul class=" nav nav-stacked">
+        <li><h5><a href="#">Today</a></h5></li>
         <li>
-          <ul class="rm-nav rm-name-header inline">
-            <li>
-              <ul class="rm-nav inline">
-                <li><a><h3>Linda Nolie</h3></a></li>
-              </ul>
-            </li>
-            <li class="pull-right">
-              <ul class="rm-nav inline">
-                <li><a class="pull-right"><h4></h4></a></li>
-              </ul>
-            </li>
+          <ul class=" nav nav-stacked">
+            <li><a href="#">Linda's Goal</a></li>
           </ul>
         </li>
-        <li class="rm-goal-preview">
-          <ul class="nav pull-right rm-nav nav-pills inline span12">
-            <li class="span2"><a href="#">Finish this project by May</a></li>
-            <li class="span2"><a href="#">Getting an Internship for summer</a></li>
-            <li class="span2"><a href="#">Fall in love with... hehe</a></li>
-            <li class="span2"><a href="#">Be closer to God </a></li>
-          </ul>
-        </li>
+        <li><h5><a href="#">This Week</a></h5></li>
         <li>
-          <ul class="nav nav-pills">
-            <li class="active"><a href="#">Activity</a></li>
-            <li><a href="#">Info</a></li>
-            <li><a href="#">Commitments</a></li>
-            <li><a href="#">Goal List</a></li>
+          <ul class="nav nav-stacked">
+            <li><a href="#">Your Goal Due</a></li>
+            <li><a href="#">Alice Goal Due</a></li>
           </ul>
         </li>
       </ul>
-    </li>
-  </ul>
+    </div>
+  </div>
 </div>
-
- 
+      
 {% endblock %}
