@@ -6,7 +6,7 @@
   console.log(friends)
   console.log(goals)
 </script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/rm.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/rm_home.js"></script>
 <div class="container-fluid"> 
   <div class="row-fluid rm-welcome-banner">
     <div class="span2">
@@ -63,36 +63,53 @@
     </div>
     <div class="span7">
       <!--Body content -->
-      <ul class="row rm-nav rm-row inline rm-green-border">
-        <li class="rm-active"><a href="#">Add Commitment</a></li>
-        <li><a href="#">Assign Goal/To Do</a></li>
+      <ul id="rm-post-tab" class="row nav-tabs rm-nav rm-row inline">
+        <li class="active"><a href="#rm-home-add-commitment">Add Commitment</a></li>
+        <li><a href="#rm-home-assign-commitment">Assign Goal/Task</a></li>
+        <li><a href="#rm-home-challenge-commitment">Take a Challenge</a></li>
       </ul>
-      <form class="row rm-row rm-post-input">
-        <textarea rows="2" class="input-block-level rm-borderless" type="text" placeholder="What is your goal?"></textarea>
-        <ul class="nav">
-          <li><button type="button" class="pull-right btn btn-success">I Commit</button></li>
-          <li class="pull-right btn dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Friends <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li class="nav-header">Who can see this</li>
-              <li class="controls">
-                <label class="checkbox">
-                  <input type="checkbox" value="option1"> Select All
-                </label>
-                <label class="checkbox">
-                  <input type="checkbox" value="option2"> Linda Nolie
-                </label>
-                <label class="checkbox">
-                  <input type="checkbox" value="option3">John Nolie
-                </label>
-                <label class="checkbox">
-                  <input type="checkbox" value="option3"> Joyce Mushayahama
-                </label>
+      <div class="tab-content">
+        <div class="tab-pane active" id="rm-home-add-commitment">  
+          <form class="row rm-row rm-post-input rm-green-border">
+            <textarea rows="2" class="input-block-level rm-borderless" type="text" placeholder="What is your goal?"></textarea>
+            <ul class="nav">
+              <li><button type="button" class="pull-right btn btn-success">I Commit</button></li>
+              <li class="pull-right btn dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Friends <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li class="nav-header">Who can see this</li>
+                  <li class="controls">
+                    <label class="checkbox">
+                      <input type="checkbox" value="option1"> Select All
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" value="option2"> Linda Nolie
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" value="option3">John Nolie
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" value="option3"> Joyce Mushayahama
+                    </label>
+                  </li>
+                </ul>
               </li>
             </ul>
-          </li>
-        </ul>
-      </form>
+          </form>
+        </div>
+        <div class="tab-pane" id="rm-home-assign-commitment">  
+          <ul class="nav rm-nav nav-pills inline span12 rm-green-border">
+            <li class="span6 rm-green-border"><a href="#rm-assign-goal-modal" role="button" data-toggle="modal"><h4>Assign a goal</h4></a></li>
+            <li class="span6 rm-green-border"><a href="#"><h4>Assign a small task</h4></a></li>
+          </ul>
+        </div>
+        <div class="tab-pane" id="rm-home-challenge-commitment">  
+          <ul class="nav rm-nav nav-pills inline span12 rm-green-border">
+            <li class="span6 rm-green-border"><a href="#"><h4>Create a challenge</h4></a></li>
+            <li class="span6 rm-green-border"><a href="#"><h4>Join a challenge</h4></a></li>
+          </ul>
+        </div>
+      </div>
       <div class="row rm-row rm-container">
         <ul class="row rm-nav rm-row inline">
           <li class="pull-right"><a href="#">Following</a></li>
@@ -159,6 +176,54 @@
         </li>
       </ul>
     </div>
+  </div>
+</div>
+<!-- =====================Extras======================-->
+<div id="rm-assign-goal-modal" class="modal hide in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="rm-assign-goal-modal-Label">Assign Goal</h3>
+  </div>
+  <div class="modal-body">
+    <dl class="dl-horizontal">
+      <dt>Goal Target(s)</dt>
+      <dd class="dropdown">
+        <a href="#" class="rm-white-btn dropdown-toggle" data-toggle="dropdown">Friends <b class="caret"></b></a>
+        <ul class="dropdown-menu rm-stop-propagation">
+          <li class="nav-header">Max 5</li>
+          <li class="controls">
+            <label class="checkbox">
+              <input type="checkbox" value="option1"> Select All
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" value="option2"> Linda Nolie
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" value="option3">John Nolie
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" value="option3"> Joyce Mushayahama
+            </label>
+          </li>
+        </ul>
+      </dd>
+      <br>
+      <dt>Goal Name</dt>
+      <dd><input type="text" placeholder="Goal Name (Be Specific)"></dd>
+      <dt>Goal Description</dt>
+      <dd><textarea rows="2" placeholder="Describe the goal" type="text"></textarea></dd>
+      <dt>Award/Trophy</dt>
+      <dd><select>
+          <option>Just For Fun</option>
+          <option>Cookies</option>
+          <option>Money</option>
+          <option>Date</option>
+      </select></dd>
+    </dl>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-success">Assign</button>
   </div>
 </div>
 {% endblock %}
