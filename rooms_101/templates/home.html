@@ -8,176 +8,196 @@
 </script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/rm_home.js"></script>
 <div class="container-fluid"> 
-  <div class="row-fluid rm-welcome-banner">
-    <div class="span2">
-      <img src="{{ STATIC_URL }}img/logo.png" alt="goalbook">
-    </div>
-    
-    <!--   <div class="span10 rm-nav-quickstart">
-           <ul class="nav pull-right rm-nav nav-pills inline">
-             <li><a href="#">Take a Quick Tour</a></li>
-             <li><a href="#">Share your Commitments</a></li>
-             <li><a href="#">Get Monitored by a Friend</a></li>
-             <li><a href="#">Assign A Commitment</a></li>
-             <li><a href="#">Challenge A friend</a></li>
-             <li><a href="#">Enjoy your Accomplishments</a></li>
-           </ul>
-    </div> -->
-  </div>
-  <div class="rm-welcome-nav row-fluid">   
-    <ul class="span12 inline">
-      <li class="span4 inline">
-        <img src="{{ STATIC_URL }}img/rm_avatar.jpg" alt="">
-        <a href="/profile/{{ user.username }}">{{user.first_name}} &nbsp;{{user.last_name}}</a>
-      </li>
-      <li class="span8">
-        <ul class="pull-right nav rm-nav inline nav-pills">
-          <li><a>Help</a></li>
-          <li><a>Features</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-</div>
-<div class="container-fluid rm-container">
   <div class="row-fluid">
-    <div class="span2 rm-sidebar rm-green-border">
-      <!--Sidebar content-->
-      <ul class="nav nav-stacked">
-        <li><h5><a href="/profile/{{ user.username }}">My Profile</a></h5></li>
-        <li><h5><a href="#">Commitments</a></h5></li>
-        <li>
-          <ul id="rm-goals-home" class="nav nav-stacked">
-          </ul>
-        </li>
-        <li><h5><a href="#">Goal List</a></h5></li>
-        <li>
-          <ul class=" nav nav-stacked">
-          </ul>
-        </li>
-        <li><h5><a href="#">Friends</a></h5></li>
-        <li><h5><a href="#">Groups</a></h5></li>
-        <li><h5><a href="#">Followers</a></h5></li>
-        <li><h5><a href="#">My Monitors</a></h5></li>
-      </ul>
-    </div>
-    <div class="span7">
-      <!--Body content -->
-      <ul id="rm-post-tab" class="row nav-tabs rm-nav rm-row inline">
-        <li class="active"><a href="#rm-home-add-commitment">Add Commitment</a></li>
-        <li><a href="#rm-home-assign-commitment">Assign Goal/Task</a></li>
-        <li><a href="#rm-home-challenge-commitment">Take a Challenge</a></li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane active" id="rm-home-add-commitment">  
-          <form class="row rm-row rm-post-input rm-green-border">
-            <textarea rows="2" class="input-block-level rm-borderless" type="text" placeholder="What is your goal?"></textarea>
-            <ul class="nav">
-              <li><button type="button" class="pull-right btn btn-success">I Commit</button></li>
-              <li class="pull-right btn dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Friends <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li class="nav-header">Who can see this</li>
-                  <li class="controls">
-                    <label class="checkbox">
-                      <input type="checkbox" value="option1"> Select All
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" value="option2"> Linda Nolie
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" value="option3">John Nolie
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" value="option3"> Joyce Mushayahama
-                    </label>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </form>
+    <div class="span9"> 
+      <div class="container-fluid"> 
+        <div class="row-fluid rm-welcome-banner">
+          <div class="span2">
+            <img src="{{ STATIC_URL }}img/logo.png" alt="goalbook">
+          </div>
+          
+          <!--   <div class="span10 rm-nav-quickstart">
+                 <ul class="nav pull-right rm-nav nav-pills inline">
+                   <li><a href="#">Take a Quick Tour</a></li>
+                   <li><a href="#">Share your Commitments</a></li>
+                   <li><a href="#">Get Monitored by a Friend</a></li>
+                   <li><a href="#">Assign A Commitment</a></li>
+                   <li><a href="#">Challenge A friend</a></li>
+                   <li><a href="#">Enjoy your Accomplishments</a></li>
+                 </ul>
+          </div> -->
         </div>
-        <div class="tab-pane" id="rm-home-assign-commitment">  
-          <ul class="nav rm-nav nav-pills inline span12 rm-green-border">
-            <li class="span6 rm-green-border"><a href="#rm-assign-goal-modal" role="button" data-toggle="modal"><h4>Assign a goal</h4></a></li>
-            <li class="span6 rm-green-border"><a href="#"><h4>Assign a small task</h4></a></li>
-          </ul>
-        </div>
-        <div class="tab-pane" id="rm-home-challenge-commitment">  
-          <ul class="nav rm-nav nav-pills inline span12 rm-green-border">
-            <li class="span6 rm-green-border"><a href="#"><h4>Create a challenge</h4></a></li>
-            <li class="span6 rm-green-border"><a href="#"><h4>Join a challenge</h4></a></li>
+        <div class="rm-welcome-nav row-fluid">   
+          <ul class="span12 inline">
+            <li class="span4 inline">
+              <img src="{{ STATIC_URL }}img/rm_avatar.jpg" alt="">
+              <a href="/profile/{{ user.username }}"><strong>{{user.first_name}} &nbsp;{{user.last_name}}</strong></a>
+            </li>
+            <li class="span8">
+              <ul class="pull-right nav rm-nav inline nav-pills">
+                <li><a>Help</a></li>
+                <li><a>Features</a></li>
+              </ul>
+            </li>
           </ul>
         </div>
       </div>
-      <div class="row rm-row rm-container">
-        <ul class="row rm-nav rm-row inline">
-          <li class="pull-right"><a href="#">Following</a></li>
-          <li class="rm-active pull-right"><a href="#">Recent</a></li>
-        </ul>
-        <ul class="rm-post row nav nav-tabs rm-green-border inline">
-          <li class="span1 img-post">
-            <img src="{{ STATIC_URL }}img/rm_avatar.jpg" class="img-polaroid" alt="">
-          </li>
-          <li class="span11">
-            <ul class="nav nav-stacked"> 
+      <div class="container-fluid rm-container">
+        <div class="row-fluid">
+          <div class="span3 rm-sidebar rm-green-border">
+            <!--Sidebar content-->
+            <ul class="nav nav-stacked">
+              <li><h5><a href="/profile/{{ user.username }}">My Profile</a></h5></li>
+              <li><h5><a href="#">Commitments</a></h5></li>
               <li>
-                <ul class="rm-nav inline">
-                  <li>
-                    <ul class="rm-nav inline">
-                      <li><a href="/profile/heyla@gmail.com"><h4>Linda Nolie</h4></a></li>
-                    </ul>
-                  </li>
-                  <li class="pull-right">
-                    <ul class="rm-nav inline">
-                      <li><a class="pull-right"><h4>4/24/13 - 5/12/13</h4></a></li>
-                    </ul>
-                  </li>
+                <ul id="rm-goals-home" class="nav nav-stacked">
                 </ul>
               </li>
-              <li class="rm-post-text"><p>I want to get a finish this project by May. This might be the next best thing</p></li>
+              <li><h5><a href="#">Goal List</a></h5></li>
               <li>
-                <ul class="inline">
-                  <li>
-                    <ul class=" inline">
-                      <li><a>Follow</a></li>
-                      <li><a>Monitor</a></li>
-                      <li><a>Encourage</a></li>
-                    </ul>
-                  </li>
-                  <li class="pull-right">
-                    <ul class=" inline">
-                      <li><a>Hide</a></li>
-                      <li><a>Report</a></li>
-                    </ul>
-                  </li>
+                <ul class=" nav nav-stacked">
+                </ul>
+              </li>
+              <li><h5><a href="#">Friends</a></h5></li>
+              <li><h5><a href="#">Groups</a></h5></li>
+              <li><h5><a href="#">Followers</a></h5></li>
+              <li><h5><a href="#">My Monitors</a></h5></li>
+            </ul>
+          </div>
+          <div class="span9">
+            <!--Body content -->
+            <ul id="rm-post-tab" class="row nav-tabs rm-nav rm-row inline">
+              <li class="active"><a href="#rm-home-add-commitment"><strong>Add Commitment</strong></a></li>
+              <li><a href="#rm-home-assign-commitment"><strong>Assign Goal/Task</strong></a></li>
+              <li><a href="#rm-home-challenge-commitment"><strong>Take a Challenge</strong></a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="rm-home-add-commitment">  
+                <form class="row rm-row rm-post-input rm-green-border">
+                  <textarea rows="2" class="input-block-level rm-borderless" type="text" placeholder="What is your goal?"></textarea>
+                  <ul class="nav">
+                    <li class="pull-right"><button type="button" class="rm-dark-blue-btn">I Commit</button></li>
+                    <li class="pull-right btn dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Friends <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                        <li class="nav-header">Who can see this</li>
+                        <li class="controls">
+                          <label class="checkbox text-left">
+                            <input type="checkbox" value="option1"> Select All
+                          </label>
+                          <label class="checkbox">
+                            <input type="checkbox" value="option2"> Linda Nolie
+                          </label>
+                          <label class="checkbox">
+                            <input type="checkbox" value="option3">John Nolie
+                          </label>
+                          <label class="checkbox">
+                            <input type="checkbox" value="option3"> Joyce Mushayahama
+                          </label>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="pull-right">
+                      <ul class="inline">
+                        <li><input type="text" id="rm-post-start-dp" placeholder="Start Date" /></li>
+                        <li><input type="text" id="rm-post-end-dp" placeholder="End Date" /></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </form>
+              </div>
+              <div class="tab-pane" id="rm-home-assign-commitment">  
+                <ul class="nav rm-nav nav-pills inline span12 rm-green-border">
+                  <li class="span6"><a href="#rm-assign-goal-modal" role="button" data-toggle="modal"><h4>Assign a goal</h4></a></li>
+                  <li class="span6"><a href="#"><h4>Assign a small task</h4></a></li>
+                </ul>
+              </div>
+              <div class="tab-pane" id="rm-home-challenge-commitment">  
+                <ul class="nav rm-nav nav-pills inline span12 rm-green-border">
+                  <li class="span6"><a href="#"><h4>Create a challenge</h4></a></li>
+                  <li class="span6"><a href="#"><h4>Join a challenge</h4></a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="row rm-row rm-container">
+              <ul class="row rm-nav rm-row inline rm-bottom-border">
+                <li class="pull-right"><a href="#">Following</a></li>
+                <li class="rm-active pull-right"><a href="#">Recent</a></li>
+              </ul>
+              <ul class="rm-post row nav nav-tabs inline">
+                <li class="span1 img-post">
+                  <img src="{{ STATIC_URL }}img/rm_avatar.jpg" class="img-polaroid" alt="">
+                </li>
+                <li class="span11">
+                  <ul class="nav nav-stacked"> 
+                    <li>
+                      <ul class="rm-nav inline">
+                        <li>
+                          <ul class="rm-nav inline">
+                            <li><a href="/profile/heyla@gmail.com"><h4>Linda Nolie</h4></a></li>
+                          </ul>
+                        </li>
+                        <li class="pull-right">
+                          <ul class="rm-nav inline">
+                            <li><a class="pull-right"><h4>4/24/13 - 5/12/13</h4></a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="rm-post-text"><p>I want to get a finish this project by May. This might be the next best thing</p></li>
+                    <li>
+                      <ul class="inline">
+                        <li>
+                          <ul class=" inline">
+                            <li><a>Follow</a></li>
+                            <li><a href="#rm-monitor-modal" role="button" data-toggle="modal">Monitor</a></li>
+                            <li><a>Encourage</a></li>
+                            <li><a>Help</a></li>
+                          </ul>
+                        </li>
+                        <li class="pull-right">
+                          <ul class=" inline">
+                            <li><a>Hide</a></li>
+                            <li><a>Report</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="span3">
+      <div class="container-fluid"> 
+        <div class="row-fluid">
+          <div class="span12 rm-sidebar rm-green-border">
+            <!--Ad content-->
+            <ul class=" nav nav-stacked">
+              <li><h5><a href="#">Today</a></h5></li>
+              <li>
+                <ul class=" nav nav-stacked">
+                  <li><a href="#">Linda's Goal</a></li>
+                </ul>
+              </li>
+              <li><h5><a href="#">This Week</a></h5></li>
+              <li>
+                <ul class="nav nav-stacked">
+                  <li><a href="#">Your Goal Due</a></li>
+                  <li><a href="#">Alice Goal Due</a></li>
                 </ul>
               </li>
             </ul>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="span3 rm-sidebar rm-green-border">
-      <!--Ad content-->
-      <ul class=" nav nav-stacked">
-        <li><h5><a href="#">Today</a></h5></li>
-        <li>
-          <ul class=" nav nav-stacked">
-            <li><a href="#">Linda's Goal</a></li>
-          </ul>
-        </li>
-        <li><h5><a href="#">This Week</a></h5></li>
-        <li>
-          <ul class="nav nav-stacked">
-            <li><a href="#">Your Goal Due</a></li>
-            <li><a href="#">Alice Goal Due</a></li>
-          </ul>
-        </li>
-      </ul>
     </div>
   </div>
 </div>
+
 <!-- =====================Extras======================-->
 <div id="rm-assign-goal-modal" class="modal hide in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
@@ -223,7 +243,33 @@
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-success">Assign</button>
+    <button class="btn btn-success">Send Request</button>
+  </div>
+</div>
+
+<div id="rm-monitor-modal" class="modal hide in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="rm-assign-goal-modal-Label">Monitor Linda's Goal</h3>
+  </div>
+  <div class="modal-body">
+    <dl class="dl-horizontal">
+      <dt>Goal Type</dt>
+      <dd class="dropdown">
+        <p><strong>Business</strong></h4>
+      </dd>
+      <dt>Goal Description</dt>
+      <dd class="dropdown">
+        <p>I want to get a finish this project by May. This might be the next best thing</p>
+      </dd>
+      <br>
+      <dt>Time Period</dt>
+      <dd>4/24/13 - 5/12/13</dd>
+    </dl>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-success">Send Request</button>
   </div>
 </div>
 {% endblock %}

@@ -25,4 +25,12 @@ function addEventHandlers() {
      $('.rm-stop-propagation').click(function (e) {
         e.stopPropagation();
     });
+     $( "#rm-post-start-dp" ).datepicker({
+         changeMonth: true,
+         changeYear: true
+     });
+     $( "#rm-post-end-dp" ).datepicker({
+         changeMonth: true,
+         changeYear: true
+     });
 }
