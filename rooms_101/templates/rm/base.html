@@ -27,26 +27,19 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </a>
-            <a href="/home" class="brand rm-img-symbol">
-              <img src="{{ STATIC_URL }}img/logo_symbol_blue.png" class="img-circle" alt="">
+            <a href="/home" class="brand">
+              <img src="{{ STATIC_URL }}img/logo.png" class="rm-img-logo" alt="">
             </a>
             <div class="nav-collapse collapse">
               <ul class="nav inline nav-pills rm-shadowless">
-                <li><a href="/home">Home</a></li>
               </ul>
             </div>
             <div class="nav-collapse collapse">
               <ul class="nav inline nav-pills rm-shadowless pull-right">
                <li>
-                 <ul class="nav">
-                   <li>
-                     <div class="input-prepend">
-                       <input class="span5" id="inputIcon" type="text" placeholder="Search">
-                       <span class="btn">Search</span>
-                     </div>
-                   </li>
-	         </ul>
+                 <img href="/profile" src="{{ STATIC_URL }}img/rm_avatar.jpg" alt="">
                </li>
+               <li><a href="/home">Home</a></li>
                <li class="dropdown">
                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
                  <ul class="dropdown-menu">
@@ -60,7 +53,7 @@
                </li>
                <li><a href="/logout">Logout</a></li>
                <li>
-                 <img href="/profile" src="{{ STATIC_URL }}img/rm_avatar.jpg" alt="">
+                 <input type="text" class="input-large search-query" placeholder="search">
                </li>
               </ul>
             </div><!--/.nav-collapse -->

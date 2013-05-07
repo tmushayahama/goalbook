@@ -2,8 +2,6 @@ from django import forms
 from django.contrib.auth.models import User 
 from django.forms import ModelForm
 from rm.models import RmUser
-
-
    
 class RegistrationForm(ModelForm):
     GENDER = (
@@ -57,3 +55,16 @@ class LoginForm(forms.Form):
     password = forms.CharField(label=u"Your New Password",
         widget=forms.PasswordInput(render_value=False, attrs={'class': 'input input-text input-block-level', 'placeholder': 'Your password'}),
         required=True)
+
+class CommitGoalForm(forms.Form):
+    goal_attr = {"rows": "2", 
+                     "class": "input-block-level rm-borderless",
+                     "placeholder": "What is your goal?"}
+    start_date_attr = {"id":"rm-post-start-dp", 
+                 "placeholder": "Start Date"}
+    end_date_attr = {"id":"rm-post-end-dp", 
+                 "placeholder": "Start Date"}
+
+    goal = forms.CharField(widget=forms.Textarea(attrs=goal_attr), required=True)
+    start_date = forms.DateField(widget=forms.TextInput(attrs=start_date_attr), required=True)
+    end_date = forms.DateField(widget=forms.TextInput(attrs=end_date_attr), required=True)

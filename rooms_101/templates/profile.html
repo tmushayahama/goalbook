@@ -11,7 +11,7 @@
   <div class="row-fluid">
     <div class="span9">
       <div class="container-fluid"> 
-        <ul class="nav row-fluid nav-tabs rm-green-border inline rm-profile-header">
+        <ul class=" row-fluid inline rm-profile-header">
           <li class="span3">
             <img src="{{ STATIC_URL }}img/rm_avatar.jpg" class="img-polaroid" alt="">
           </li>
@@ -69,7 +69,7 @@
               <li><h5><a href="#">Goal List</a></h5></li>
               <li>
                 <ol>
-                  <li><a href="#">This is my firstjijijij uuuj ujuj  goal</a></li>
+                  <li><a href="#">This is my first goal</a></li>
                   <li><a href="#">This is my second goal</a></li>
                   <li><a href="#">This is my third goal</a></li>
                   <li><a href="#">This is my fourth goal</a></li>
@@ -83,8 +83,40 @@
           </div>
           <div class="span9">
             <div class="tab-content">
-              <div class="tab-pane rm-green-border active" id="rm-profile-activity">
-                <ul class="rm-post row nav nav-tabs rm-green-border inline">
+              <div class="tab-pane active" id="rm-profile-activity">
+                <form class="row rm-row rm-post-input rm-green-border">
+                  <textarea rows="2" class="input-block-level rm-borderless" type="text" placeholder="What is your goal?"></textarea>
+                  <ul class="nav">
+                    <li class="pull-right"><button type="button" class="rm-dark-blue-btn">I Commit</button></li>
+                    <li class="pull-right btn dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Friends <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                        <li class="nav-header">Who can see this</li>
+                        <li class="controls">
+                          <label class="checkbox text-left">
+                            <input type="checkbox" value="option1"> Select All
+                          </label>
+                          <label class="checkbox">
+                            <input type="checkbox" value="option2"> Linda Nolie
+                          </label>
+                          <label class="checkbox">
+                            <input type="checkbox" value="option3">John Nolie
+                          </label>
+                          <label class="checkbox">
+                            <input type="checkbox" value="option3"> Joyce Mushayahama
+                          </label>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="pull-right">
+                      <ul class="inline">
+                        <li><input type="text" id="rm-post-start-dp" placeholder="Start Date" /></li>
+                        <li><input type="text" id="rm-post-end-dp" placeholder="End Date" /></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </form>
+                <ul class="rm-post row nav nav-tabs rm-border-bottom inline">
                   <li class="span1 img-post">
                     <img src="{{ STATIC_URL }}img/rm_avatar.jpg" class="img-polaroid" alt="">
                   </li>
@@ -164,7 +196,7 @@
               </div>
               <div class="tab-pane" id="rm-profile-goal-info">
                 <div class="span3">
-                  <h3>Goal List</h3>
+                  <h4>Goal Progress </h4>
                   
                 </div>
               </div>

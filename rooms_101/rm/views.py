@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.template import Context, loader, RequestContext
-from rm.forms import RegistrationForm, LoginForm
+from rm.forms import RegistrationForm, LoginForm, CommitGoalForm
 
 from rm.models import *
 import json
@@ -88,9 +88,37 @@ def home_page(request):
     friends = json.dumps(friends_list) #dump list as JSON
     goals = json.dumps(goals_list)
        # return HttpResponse(recipe_list_json, 'application/javascript')
-    context = {'friends':friends, 'goals':goals}
+    context = {'friends':friends, 
+               'goals':goals,
+               'commit_goal_form':CommitGoalForm()}
     return render(request, 'home.html', context)
 
+def commit_goal(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/login')
+    if (request.method == 'POST'):
+        form = CommitGoalForm(request.POST)
+        if form.is_valid():
+            task_type = RmTaskType.objects.get(name="Goal")
+            task_category=RmTaskCategory.objects.get(name="other")
+            rm_user = request.user
+            goal_name=form.cleaned_data['goal']
+            start_date=form.cleaned_data['start_date']
+            end_date=form.cleaned_data['end_date']
+            task = RmTask(name=goal_name,
+                          is_group_task=0,
+                          task_type=task_type,
+                          task_category=task_category,
+                          begin_date=start_date,
+                          end_date=end_date)
+            task.save();
+            rm_user=RmUser.objects.get(user=rm_user)
+            user_task = RmUserTask(taskee=rm_user, tasker=rm_user, task=task)
+            user_task.save()
+    
+    return HttpResponse(json.dumps({"commitment":goal_name,
+                                    "taskee":rm_user.get_profile.first_name}))
+        
 @login_required 
 def profile_page(request, username):
     if request.user.is_authenticated():

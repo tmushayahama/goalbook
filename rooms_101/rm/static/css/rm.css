@@ -5,6 +5,10 @@ img {
     width:100%;
     height :100%;
 }
+.rm-img-logo {
+    width:150px;
+    height:35px;
+}
 a {
     color:#456788;
 }
@@ -344,12 +348,11 @@ a {
 .rm-name-header {
     background-color:#fff;
     max-height: 40px;
-    border-top:#c7e1ba solid 1px;
-    border-bottom:#c7e1ba solid 2px;
     padding-bottom:10px;
 }
 .rm-goal-preview {
     background-color:#fff;
+    border-top:#456789 solid 1px;
     border-bottom:#456789 solid 2px;
     height: 120px;
     margin-bottom:5px;

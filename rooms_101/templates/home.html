@@ -12,20 +12,8 @@
     <div class="span9"> 
       <div class="container-fluid"> 
         <div class="row-fluid rm-welcome-banner">
-          <div class="span2">
-            <img src="{{ STATIC_URL }}img/logo.png" alt="goalbook">
+          <div class="span3">
           </div>
-          
-          <!--   <div class="span10 rm-nav-quickstart">
-                 <ul class="nav pull-right rm-nav nav-pills inline">
-                   <li><a href="#">Take a Quick Tour</a></li>
-                   <li><a href="#">Share your Commitments</a></li>
-                   <li><a href="#">Get Monitored by a Friend</a></li>
-                   <li><a href="#">Assign A Commitment</a></li>
-                   <li><a href="#">Challenge A friend</a></li>
-                   <li><a href="#">Enjoy your Accomplishments</a></li>
-                 </ul>
-          </div> -->
         </div>
         <div class="rm-welcome-nav row-fluid">   
           <ul class="span12 inline">
@@ -73,34 +61,29 @@
             </ul>
             <div class="tab-content">
               <div class="tab-pane active" id="rm-home-add-commitment">  
-                <form class="row rm-row rm-post-input rm-green-border">
-                  <textarea rows="2" class="input-block-level rm-borderless" type="text" placeholder="What is your goal?"></textarea>
+                <form id="rm-commit-form" class="row rm-row rm-post-input rm-green-border">
+                  {% csrf_token %}
+                  {{ commit_goal_form.goal }}
+                 
                   <ul class="nav">
-                    <li class="pull-right"><button type="button" class="rm-dark-blue-btn">I Commit</button></li>
-                    <li class="pull-right btn dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Friends <b class="caret"></b></a>
+                    <li class="pull-right">
+                      <button type="submit" id="rm-commit-post-home" class="rm-dark-blue-btn">I Commit</button>
+                    </li>
+                    <li class="pull-right dropdown">
+                      <a href="#" class="dropdown-toggle btn" data-toggle="dropdown">Friends <b class="caret"></b></a>
                       <ul class="dropdown-menu">
                         <li class="nav-header">Who can see this</li>
-                        <li class="controls">
+                        <li id="rm-friends-selector-home" class="controls">
                           <label class="checkbox text-left">
                             <input type="checkbox" value="option1"> Select All
-                          </label>
-                          <label class="checkbox">
-                            <input type="checkbox" value="option2"> Linda Nolie
-                          </label>
-                          <label class="checkbox">
-                            <input type="checkbox" value="option3">John Nolie
-                          </label>
-                          <label class="checkbox">
-                            <input type="checkbox" value="option3"> Joyce Mushayahama
                           </label>
                         </li>
                       </ul>
                     </li>
                     <li class="pull-right">
                       <ul class="inline">
-                        <li><input type="text" id="rm-post-start-dp" placeholder="Start Date" /></li>
-                        <li><input type="text" id="rm-post-end-dp" placeholder="End Date" /></li>
+                        {{ commit_goal_form.start_date }}
+                        {{ commit_goal_form.end_date }}
                       </ul>
                     </li>
                   </ul>
@@ -145,6 +128,50 @@
                       </ul>
                     </li>
                     <li class="rm-post-text"><p>I want to get a finish this project by May. This might be the next best thing</p></li>
+                    <li>
+                      <ul class="inline">
+                        <li>
+                          <ul class=" inline">
+                            <li><a>Follow</a></li>
+                            <li><a href="#rm-monitor-modal" role="button" data-toggle="modal">Monitor</a></li>
+                            <li><a>Encourage</a></li>
+                            <li><a>Help</a></li>
+                          </ul>
+                        </li>
+                        <li class="pull-right">
+                          <ul class=" inline">
+                            <li><a>Hide</a></li>
+                            <li><a>Report</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <ul class="rm-post row nav nav-tabs inline">
+                <li class="span1 img-post">
+                  <img src="{{ STATIC_URL }}img/rm_avatar.jpg" class="img-polaroid" alt="">
+                </li>
+                <li class="span11">
+                  <ul class="nav nav-stacked"> 
+                    <li>
+                      <ul class="rm-nav inline">
+                        <li>
+                          <ul class="rm-nav inline">
+                            <li><a href="/profile/heyla@gmail.com"><h4>Alice Trotter</h4></a></li>
+                            <li><a href="/profile/heyla@gmail.com"><h4> - </h4></a></li>
+                            <li><a href="/profile/heyla@gmail.com"><h4>Linda Nolie</h4></a></li>
+                          </ul>
+                        </li>
+                        <li class="pull-right">
+                          <ul class="rm-nav inline">
+                            <li><a class="pull-right"><h4>4/06/13 - 4/12/13</h4></a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="rm-post-text"><p>Do your taxes</p></li>
                     <li>
                       <ul class="inline">
                         <li>

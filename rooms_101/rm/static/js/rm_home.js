@@ -6,6 +6,7 @@ $(document).ready(function (e) {
     console.log("Loading rm.js...");
     $.ajaxSetup({traditional: true});
     populateGoals();
+    populateFriends();
     addEventHandlers();
 });
 function populateGoals () {
@@ -15,6 +16,24 @@ function populateGoals () {
                 .append($("<a/>")
                         .text(goals[i]["task_name"])));
     }
+}
+function populateFriends () {
+    for(var i=0; i<friends.length; i++) {
+        $("#rm-friends-selector-home")
+            .append($("<label/>")
+                    .addClass("checkbox")
+                    .text(friends[i]["first_name"] + " " + friends[i]["last_name"])
+                    .append($("<input/>")
+                           
+                            .attr("type", "checkbox")));
+    }
+}
+function goalCommit(e) {
+    e.preventDefault();
+    $.post("commit/", $('#rm-commit-form').serialize(), function(data) {
+        alert(data);
+        //$('.result').html(data);
+    });
 }
 function addEventHandlers() {
     $('#rm-post-tab a').click(function (e) {
@@ -33,4 +52,7 @@ function addEventHandlers() {
          changeMonth: true,
          changeYear: true
      });
+    $("#rm-commit-post-home").click(function(e) {
+        goalCommit(e);
+    });
 }
