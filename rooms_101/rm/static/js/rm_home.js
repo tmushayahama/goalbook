@@ -7,8 +7,14 @@ $(document).ready(function (e) {
     $.ajaxSetup({traditional: true});
     populateGoals();
     populateFriends();
+    populateRecentCommitments()
     addEventHandlers();
 });
+function populateRecentCommitments() {
+    for(var i=0; i<goals.length; i++) {
+        addPost("#gb-recent-posts-home", true, goals[i]["task_name"], "Tremayne Mushayahama", "tmtrigga@gmail.com");
+    }
+}
 function populateGoals () {
     for(var i=0; i<goals.length; i++) {
     $("#rm-goals-home")
@@ -31,9 +37,15 @@ function populateFriends () {
 function goalCommit(e) {
     e.preventDefault();
     $.post("commit/", $('#rm-commit-form').serialize(), function(data) {
-        alert(data);
-        //$('.result').html(data);
-    });
+        console.log(data);
+        console.log(data["commitment"]);
+        console.log(data["taskee_name"])
+        addPost("#gb-recent-posts-home", false,  data["commitment"], data["taskee_name"], "tmtrigga@gmail.com");
+        $("#rm-goals-home")
+        .prepend($("<li/>")
+                 .append($("<a/>")
+                         .text(data["commitment"])));
+    }, "json");
 }
 function addEventHandlers() {
     $('#rm-post-tab a').click(function (e) {

@@ -117,7 +117,7 @@ def commit_goal(request):
             user_task.save()
     
     return HttpResponse(json.dumps({"commitment":goal_name,
-                                    "taskee":rm_user.get_profile.first_name}))
+                                    "taskee_name":user_task.taskee.user.first_name}))
         
 @login_required 
 def profile_page(request, username):
