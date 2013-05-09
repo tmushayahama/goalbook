@@ -84,3 +84,14 @@
     </ul>
   </li>
 </ul>
+
+<!-- SUGGESTED FRIEND -->
+<li class="rm-friends-preview">
+  <ul class="inline ">
+    <li class="span12 inline rm-overflow-hidden">
+      <img src="{{ STATIC_URL }}img/rm_avatar.jpg" class="img-friend-preview" alt="">
+      <a href="/profile/{{ user.username }}">{{user.first_name}} &nbsp;{{user.last_name}}</a>
+      <a class="pull-right btn btn-success btn-mini">Add</a>
+    </li>
+  </ul>
+</li>

@@ -7,12 +7,18 @@ $(document).ready(function (e) {
     $.ajaxSetup({traditional: true});
     populateGoals();
     populateFriends();
-    populateRecentCommitments()
+    populateRecentCommitments();
+    populateSuggestedFriends();
     addEventHandlers();
 });
 function populateRecentCommitments() {
     for(var i=0; i<goals.length; i++) {
         addPost("#gb-recent-posts-home", true, goals[i]["task_name"], "Tremayne Mushayahama", "tmtrigga@gmail.com");
+    }
+}
+function populateSuggestedFriends() {
+    for(var i=0; i<suggestedFriends.length; i++) {
+        addSuggestedFriend("#gb-suggested-friends", suggestedFriends[i]["username"], suggestedFriends[i]["first_name"], suggestedFriends[i]["last_name"]);
     }
 }
 function populateGoals () {

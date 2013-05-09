@@ -71,4 +71,24 @@ function addPost(id, append, postParagraph, taskeeName, username) {
         $(id).prepend($innerDiv);
     }
 }
-    
+
+function addSuggestedFriend(id, username, firstName, lastName) {
+    $(id)
+        .append($("<li/>")
+                .addClass("rm-friends-preview")
+                .append($("<ul/>")
+                        .addClass("inline ")
+                        .append($("<li/>")
+                                .addClass("span12 inline rm-overflow-hidden")
+                                .append($("<img/>")
+                                        .addClass("img-friend-preview")
+                                        .attr("src", avatar)
+                                        .attr("alt", ""))
+                                .append($("<a/>")
+                                        .attr("href", "/profile/"+username)
+                                        .text(firstName+" "+lastName))
+                                .append($("<a/>")
+                                        .addClass("pull-right btn btn-success btn-mini")
+                                        .text("Add")))));
+}
+            

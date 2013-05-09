@@ -3,6 +3,7 @@
 <script id="tft-expt-types" type="text/javascript">
   var friends = {{ friends|safe }}
   var goals = {{ goals|safe }}
+  var suggestedFriends = {{ suggested_friends|safe }}
   var avatar = {{ STATIC_URL }}+"img/rm_avatar.jpg"
   console.log(friends)
   console.log(goals)
@@ -13,12 +14,12 @@
   <div class="row-fluid">
     <div class="span9"> 
       <div class="container-fluid"> 
-        <div class="row-fluid rm-welcome-banner">
+       <!-- <div class="row-fluid rm-welcome-banner">
           <div class="span3">
           </div>
-        </div>
+        </div>-->
         <div class="rm-welcome-nav row-fluid">   
-          <ul class="span12 inline">
+          <ul class="span12 inline rm-nav">
             <li class="span4 inline">
               <img src="{{ STATIC_URL }}img/rm_avatar.jpg" alt="">
               <a href="/profile/{{ user.username }}"><strong>{{user.first_name}} &nbsp;{{user.last_name}}</strong></a>
@@ -33,8 +34,8 @@
         </div>
       </div>
       <div class="container-fluid rm-container">
-        <div class="row-fluid">
-          <div class="span3 rm-sidebar rm-green-border">
+        <div class="row-fluid rm-white">
+          <div class="span3 rm-sidebar">
             <!--Sidebar content-->
             <ul class="nav nav-stacked">
               <li><h5><a href="/profile/{{ user.username }}">My Profile</a></h5></li>
@@ -54,7 +55,7 @@
               <li><h5><a href="#">My Monitors</a></h5></li>
             </ul>
           </div>
-          <div class="span9">
+          <div class="span9 rm-main-nav">
             <!--Body content -->
             <ul id="rm-post-tab" class="row nav-tabs rm-nav rm-row inline">
               <li class="active"><a href="#rm-home-add-commitment"><strong>Add Commitment</strong></a></li>
@@ -120,7 +121,7 @@
     <div class="span3">
       <div class="container-fluid"> 
         <div class="row-fluid">
-          <div class="span12 rm-sidebar rm-green-border">
+          <div class="span12 rm-sidebar">
             <!--Ad content-->
             <ul class=" nav nav-stacked">
               <li><h5><a href="#">Today</a></h5></li>
@@ -135,6 +136,14 @@
                   <li><a href="#">Your Goal Due</a></li>
                   <li><a href="#">Alice Goal Due</a></li>
                 </ul>
+              </li>
+            </ul>
+            <ul id="gb-suggested-friends" class="nav nav-stacked"> 
+              <li class="span12 inline">
+                <h5>
+                  <a>Suggested Friends</a>
+                  <a class="pull-right">View All</a>
+                </h5>
               </li>
             </ul>
           </div>

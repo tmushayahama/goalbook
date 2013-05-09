@@ -77,6 +77,8 @@ def home_page(request):
     rm_user = request.user.get_profile
     friends = RmFriend.objects.filter(user=rm_user)
     goals = RmUserTask.objects.filter(taskee=rm_user)
+    suggested_friends = RmUser.objects.exclude(user=request.user)#exclude(user=rm_user)
+    suggested_friends_list = []
     goals_list = []
     friends_list = [] #create list
     for row in goals: #populate list
@@ -84,12 +86,18 @@ def home_page(request):
     
     for row in friends: #populate list
         friends_list.append({'first_name':row.friend.user.first_name, 'last_name': row.friend.user.last_name})
+        suggested_friends = suggested_friends.exclude(user=row.friend.user)
+
+    for row in suggested_friends: #populate list
+        suggested_friends_list.append({"username":row.user.username, "first_name":row.user.first_name, "last_name": row.user.last_name})
     
+        
     friends = json.dumps(friends_list) #dump list as JSON
     goals = json.dumps(goals_list)
        # return HttpResponse(recipe_list_json, 'application/javascript')
     context = {'friends':friends, 
                'goals':goals,
+               'suggested_friends':json.dumps(suggested_friends_list),
                'commit_goal_form':CommitGoalForm()}
     return render(request, 'home.html', context)
 
@@ -127,8 +135,12 @@ def profile_page(request, username):
         if username == rm_user.username:
             context = {'authorization':'owner'}
             return render(request, 'profile.html', context)
+        #else 
 
 
 def logout_user (request):
     logout(request)
     return HttpResponseRedirect('/login')
+
+def is_friend(username, friend):
+    return "ll"
