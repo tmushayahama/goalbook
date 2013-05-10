@@ -22,8 +22,7 @@
                 <ul class="nav nav-stacked rm-nav">
                   <li>
                     <ul class="nav rm-nav nav-tabs inline">
-                      <li><h6><a>Welcome</a></h6></li>
-                      <li class="pull-right"><a class="btn btn-mini">Edit</a></li>
+                      <li><h6><a>Welcome {{ user.first_name }}</a></h6></li>
                     </ul>
                   </li>
                   <li>
@@ -48,19 +47,19 @@
                     <ul class="thumbnails">
                       <li class="span4">
                         <a class="thumbnail rm-stats">
-                         <p>Achieved</p>
+                          <p>Achieved</p>
                           <h1>0</h1>
                         </a>
                       </li>
                       <li class="span4">
                         <a class="thumbnail rm-stats">
-                         <p>In Progress</p>
+                          <p>In Progress</p>
                           <h1>0</h1>
                         </a>
                       </li>
                       <li class="span4">
                         <a class="thumbnail rm-stats">
-                         <p>My List</p>
+                          <p>My List</p>
                           <h1>0</h1>
                         </a>
                       </li>
@@ -71,20 +70,20 @@
                   <li class="span12 inline">
                     <h5>
                       <a>Connections</a>
-                       <a class="pull-right">Visible to Public</a>
+                      <a class="pull-right">Visible to Public</a>
                     </h5>
                   </li>
                   <li>
                     <ul class="thumbnails">
                       <li class="span4">
                         <a class="thumbnail rm-stats">
-                         <p>Friends</p>
+                          <p>Friends</p>
                           <h1>3</h1>
                         </a>
                       </li>
                       <li class="span4">
                         <a class="thumbnail rm-stats">
-                         <p>Subscribers</p>
+                          <p>Subscribers</p>
                           <h1>0</h1>
                         </a>
                       </li>
@@ -108,7 +107,7 @@
                     <ul class="thumbnails">
                       <li class="span6">
                         <a class="thumbnail rm-stats">
-                         <p>Monitored</p>
+                          <p>Monitored</p>
                           <h1>0</h1>
                         </a>
                       </li>
@@ -128,18 +127,12 @@
             <div class="container-fluid">
               <div class="row-fluid">
                 <ul class="nav nav-stacked span12"> 
-                  <li>
-                    <ul class="rm-nav rm-name-header inline">
-                      <li>
-                        <ul class="rm-nav inline">
-                          <li><a><h3>{{ user.first_name }} &nbsp; {{ user.last_name }}</h3></a></li>
-                        </ul>
-                      </li>
-                      <li class="pull-right">
-                        <ul class="rm-nav inline">
-                        </ul>
-                      </li>
-                    </ul>
+                  <li class="rm-profile-name-header inline">
+                    <h3>
+                      <a>{{ first_name }} {{ last_name }}</a>
+                      <a class="pull-right btn">Subscribe</a>
+                      <a class="pull-right btn btn-success">Add Friend</a>
+                    </h3>
                   </li>
                   <li class="rm-goal-preview">
                     <br>
@@ -163,9 +156,8 @@
                   </li>
                   <li>
                     <ul id="rm-profile-tab" class="nav nav-pills">
-                      <li class="active"><a href="#rm-profile-activity">Activity</a></li>
-                      <li><a href="#rm-profile-info">Info</a></li>
-                      <li><a href="#rm-profile-goal-info">Goal Info</a></li>
+                      <li class="active"><a href="#rm-profile-info">Info</a></li>
+                      <li><a href="#rm-profile-goal-info">Mutual Friends <small>2</small></a></li>
                     </ul>
                   </li>
                 </ul>
@@ -173,121 +165,32 @@
               <div class="row-fluid">
                 <div class="span12">
                   <div class="tab-content">
-                    <div class="tab-pane active" id="rm-profile-activity">
-                      <form class="row rm-row rm-post-input rm-green-border">
-                        <textarea rows="2" class="input-block-level rm-borderless" type="text" placeholder="What is your goal?"></textarea>
-                        <ul class="nav">
-                          <li class="pull-right"><button type="button" class="rm-dark-blue-btn">I Commit</button></li>
-                          <li class="pull-right btn dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Friends <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                              <li class="nav-header">Who can see this</li>
-                              <li class="controls">
-                                <label class="checkbox text-left">
-                                  <input type="checkbox" value="option1"> Select All
-                                </label>
-                                <label class="checkbox">
-                                  <input type="checkbox" value="option2"> Linda Nolie
-                                </label>
-                                <label class="checkbox">
-                                  <input type="checkbox" value="option3">John Nolie
-                                </label>
-                                <label class="checkbox">
-                                  <input type="checkbox" value="option3"> Joyce Mushayahama
-                                </label>
-                              </li>
-                            </ul>
-                          </li>
-                          <li class="pull-right">
-                            <ul class="inline">
-                              <li><input type="text" id="rm-post-start-dp" placeholder="Start Date" /></li>
-                              <li><input type="text" id="rm-post-end-dp" placeholder="End Date" /></li>
-                            </ul>
-                          </li>
-                        </ul>
-                      </form>
-                      <ul class="rm-post row nav nav-tabs rm-border-bottom inline">
-                        <li class="span1 img-post">
-                          <img src="{{ STATIC_URL }}img/rm_avatar.jpg" class="img-polaroid" alt="">
-                        </li>
-                        <li class="span11">
-                          <ul class="nav nav-stacked"> 
-                            <li>
-                              <ul class="rm-nav inline">
-                                <li>
-                                  <ul class="rm-nav inline">
-                                    <li><a><h4>Linda Nolie</h4></a></li>
-                                  </ul>
-                                </li>
-                                <li class="pull-right">
-                                  <ul class="rm-nav inline">
-                                    <li><a class="pull-right"><h4>4/24/13 - 5/12/13</h4></a></li>
-                                  </ul>
-                                </li>
-                              </ul>
-                            </li>
-                            <li class="rm-post-text"><p>I want to get a finish this project by May. This might be the next best thing</p></li>
-                            <li>
-                              <ul class="inline">
-                                <li>
-                                  <ul class=" inline">
-                                    <li><a>Follow</a></li>
-                                    <li><a>Monitor</a></li>
-                                    <li><a>Encourage</a></li>
-                                  </ul>
-                                </li>
-                                <li class="pull-right">
-                                  <ul class=" inline">
-                                    <li><a>Hide</a></li>
-                                    <li><a>Report</a></li>
-                                  </ul>
-                                </li>
-                              </ul>
-                            </li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="tab-pane" id="rm-profile-info">
+                    <div class="tab-pane active" id="rm-profile-info">
                       <div class="span6">
                         <ul class="nav nav-tabs inline">
-                          <li><h4>About Me</h4></li>
-                          <li class="pull-right"><a class="btn btn-mini">Edit</a></li>
+                          <li><h4>About {{ first_name }}</h4></li>
                         </ul>
-                        <p class="rm-green-border">hdh djds iiis fuhfsd ijfsdfhsd iid jdfsdfisdf ivsfi vsdvisdvisdivvvmv
-                          sfgvdvsfujsfvdfv ffu fufr fffi frf rfhhg rrg rrjg rgijr riiiie dap rpari r
-                          arfe f f rfr
+                        <p class="rm-green-border">
+                          {{ first_name }} only shares her goals with friends. 
+                          <a>Add her as friend</a> or <a>subscribe to her account.</a>
                         </p>
                       </div>
                       <div class="span6">
                         <ul class="nav nav-tabs inline">
-                          <li><h4>My Info</h4></li>
-                          <li class="pull-right"><a class="btn btn-mini">Edit</a></li>
+                          <li><h4>Info</h4></li>
                         </ul>
                         <dl class="dl-horizontal rm-green-border">
-                          <dt>Birthday</dt>
-                          <dd>August 17, 2000</dd>
                           <dt>Gender</dt>
-                          <dd>Male</dd>
+                          <dd>Female</dd>
                           <br>
                           <dt>Contact Info</dt>
-                          <dd><address>
-                              1578 Neil Avenue<br>
-                              Columbus, OH 43210<br>
-                              <abbr title="Phone"></abbr> (614) 329-4344
-                            </address>
+                          <dd>
                             <address>
-                              <strong>{{ user.first_name }} &nbsp; {{ user.last_name }}</strong><br>
-                              <a href="mailto:#">{{ user.username }}</a>
+                              <strong>{{ first_name }} &nbsp; {{ last_name }}</strong><br>
+                              <a href="mailto:#">{{ username }}</a>
                             </address>
                           </dd>
                         </dl>
-                      </div>
-                    </div>
-                    <div class="tab-pane" id="rm-profile-goal-info">
-                      <div class="span3">
-                        <h4>Goal Progress </h4>
-                        
                       </div>
                     </div>
                   </div>

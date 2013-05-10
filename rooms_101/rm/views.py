@@ -130,17 +130,29 @@ def commit_goal(request):
 @login_required 
 def profile_page(request, username):
     if request.user.is_authenticated():
-        #return HttpResponseRedirect('/profile')
         rm_user = request.user
         if username == rm_user.username:
             context = {'authorization':'owner'}
             return render(request, 'profile.html', context)
-        #else 
-
+        else:
+            if is_friend(rm_user, username):
+                context = {'authorization':'friend'}
+                return render(request, 'profile.html', context)
+            else:
+                rm_user=RmUser.objects.get(user__username=username)
+                context = {'authorization':'non_friend'}
+                return render(request, 'profile_non_friend.html', {'profile_data':json.dumps(context),
+                                                        'username':username,
+                                                        'first_name':rm_user.user.first_name,
+                                                        'last_name':rm_user.user.last_name})
 
 def logout_user (request):
     logout(request)
     return HttpResponseRedirect('/login')
 
-def is_friend(username, friend):
-    return "ll"
+def is_friend(user, friend_username):
+    try:
+        RmFriend.objects.get(user=user, friend__user__username=friend_username)
+    except RmFriend.DoesNotExist:
+        return False
+    return True

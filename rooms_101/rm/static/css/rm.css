@@ -6,7 +6,7 @@ img {
     height :100%;
 }
 .rm-img-logo {
-    width:200px;
+    width:180px;
     height:32px;
 }
 a {
@@ -282,7 +282,7 @@ a {
     pointer:cursor;
 }
 .rm-sidebar ul{
-    padding-left:10px;
+    padding-left:5px;
 }
 .rm-sidebar ul a{
     color:#111111;
@@ -363,21 +363,43 @@ a {
 }
 
 /*=======PROFILE=======*/
-.rm-profile-header {
+.rm-profile-name-header h3{
+    padding: 1px 0px 2px 1px;
+    margin-bottom: 2px;
+}
+.rm-stats {
+    overflow:hidden;
+    
+}
+.rm-stats:hover {
+    background-color:#f8f8ff;
+    color:#456789;
+    text-decoration:none;
+}
+.rm-stats p {
+    font-size:0.7em;
+}
+.rm-stats p, 
+.rm-stats h1{
+    text-align:center;
+    margin:1px;
+    padding:1px;
 }
 .rm-name-header {
     background-color:#fff;
     max-height: 40px;
-    padding-bottom:10px;
+    padding-bottom:5px;
 }
 .rm-goal-preview {
-    background-color:#fff;
-    border-top:#456789 solid 1px;
-    border-bottom:#456789 solid 2px;
+    background-color:#c9cacd;
+    border-top:#789abc solid 1px;
     height: 120px;
     margin-bottom:5px;
     overflow:auto;
 }
-.rm-goal-preview h4 {
-    color:#456789;
+.rm-goal-preview small {
+    color:#000;
+}
+.rm-goal-preview:hover {
+    background-color:#87888a;
 }

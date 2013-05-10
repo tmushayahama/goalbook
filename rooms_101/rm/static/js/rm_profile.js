@@ -9,3 +9,10 @@ function addEventHandlers () {
         $(this).tab('show');
     });
 }
+function initProfile(authorization) {
+    if (authorization=="owner") {
+        
+    } else if (authorization=="friend") {
+    } else {
+    }
+}
