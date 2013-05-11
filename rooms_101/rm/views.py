@@ -74,31 +74,7 @@ def login_user(request):
 def home_page(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/login')
-    rm_user = request.user.get_profile
-    friends = RmFriend.objects.filter(user=rm_user)
-    goals = RmUserTask.objects.filter(taskee=rm_user)
-    suggested_friends = RmUser.objects.exclude(user=request.user)#exclude(user=rm_user)
-    suggested_friends_list = []
-    goals_list = []
-    friends_list = [] #create list
-    for row in goals: #populate list
-        goals_list.append({'task_name':row.task.name})
-    
-    for row in friends: #populate list
-        friends_list.append({'first_name':row.friend.user.first_name, 'last_name': row.friend.user.last_name})
-        suggested_friends = suggested_friends.exclude(user=row.friend.user)
-
-    for row in suggested_friends: #populate list
-        suggested_friends_list.append({"username":row.user.username, "first_name":row.user.first_name, "last_name": row.user.last_name})
-    
-        
-    friends = json.dumps(friends_list) #dump list as JSON
-    goals = json.dumps(goals_list)
-       # return HttpResponse(recipe_list_json, 'application/javascript')
-    context = {'friends':friends, 
-               'goals':goals,
-               'suggested_friends':json.dumps(suggested_friends_list),
-               'commit_goal_form':CommitGoalForm()}
+    context = get_home_profile(request)
     return render(request, 'home.html', context)
 
 def commit_goal(request):
@@ -132,7 +108,9 @@ def profile_page(request, username):
     if request.user.is_authenticated():
         rm_user = request.user
         if username == rm_user.username:
-            context = {'authorization':'owner'}
+            context = {'authorization':'owner',
+                       'commit_goal_form':CommitGoalForm()}
+            context.update(get_home_profile(request))
             return render(request, 'profile.html', context)
         else:
             if is_friend(rm_user, username):
@@ -142,9 +120,9 @@ def profile_page(request, username):
                 rm_user=RmUser.objects.get(user__username=username)
                 context = {'authorization':'non_friend'}
                 return render(request, 'profile_non_friend.html', {'profile_data':json.dumps(context),
-                                                        'username':username,
-                                                        'first_name':rm_user.user.first_name,
-                                                        'last_name':rm_user.user.last_name})
+                                                                   'username':username,
+                                                                   'first_name':rm_user.user.first_name,
+                                                                   'last_name':rm_user.user.last_name})
 
 def logout_user (request):
     logout(request)
@@ -156,3 +134,30 @@ def is_friend(user, friend_username):
     except RmFriend.DoesNotExist:
         return False
     return True
+
+def get_home_profile(request):
+    rm_user = request.user.get_profile
+    friends = RmFriend.objects.filter(user=rm_user)
+    goals = RmUserTask.objects.filter(taskee=rm_user)
+    suggested_friends = RmUser.objects.exclude(user=request.user)#exclude(user=rm_user)
+    suggested_friends_list = []
+    goals_list = []
+    friends_list = [] #create list
+    for row in goals: #populate list
+        goals_list.append({'task_name':row.task.name})
+    
+    for row in friends: #populate list
+        friends_list.append({'first_name':row.friend.user.first_name, 'last_name': row.friend.user.last_name})
+        suggested_friends = suggested_friends.exclude(user=row.friend.user)
+
+    for row in suggested_friends: #populate list
+        suggested_friends_list.append({"username":row.user.username, "first_name":row.user.first_name, "last_name": row.user.last_name})
+    
+        
+    friends = json.dumps(friends_list) #dump list as JSON
+    goals = json.dumps(goals_list)
+       # return HttpResponse(recipe_list_json, 'application/javascript')
+    return {'friends':friends, 
+            'goals':goals,
+            'suggested_friends':json.dumps(suggested_friends_list),
+            'commit_goal_form':CommitGoalForm()}
