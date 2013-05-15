@@ -138,10 +138,10 @@ def is_friend(user, friend_username):
     return True
 
 def get_home_profile(request):
-    rm_user = request.user.get_profile
-    friends = RmFriend.objects.filter(user=rm_user)
-    goals = RmUserTask.objects.filter(taskee=rm_user)
-    suggested_friends = RmUser.objects.exclude(user=request.user)#exclude(user=rm_user)
+    gb_user = request.user
+    friends = GbRelationship.objects.filter(user=gb_user)
+    goals = GbUserTask.objects.filter(taskee=gb_user)
+    suggested_friends = GbUser.objects.exclude(user=request.user)#exclude(user=rm_user)
     suggested_friends_list = []
     goals_list = []
     friends_list = [] #create list
