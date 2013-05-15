@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User 
 from django.forms import ModelForm
-from rm.models import RmUser
+from rm.models import GbUser
    
 class RegistrationForm(ModelForm):
     GENDER = (
@@ -28,9 +28,10 @@ class RegistrationForm(ModelForm):
     gender = forms.ChoiceField(label=u"Your Gender", choices=GENDER,
         widget=forms.Select(attrs={'class': 'input input-text  input-block-level', 'placeholder': 'Your Gender'}),
         required=True)
+    birthdate = forms.DateField(widget=forms.TextInput(attrs={'class': 'input input-text  input-block-level', 'placeholder': 'Your Birth Date'}), required=True)
     
     class Meta:
-        model=RmUser
+        model=GbUser
         exclude=('user',)
 
     def clean_email(self):

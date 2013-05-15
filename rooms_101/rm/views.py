@@ -10,7 +10,7 @@ from rm.models import *
 import json
 
 def index(request):
-    latest_poll_list = RmUser.objects.all()
+    latest_poll_list = GbUser.objects.all()
     template = loader.get_template('index.html')
     context = Context({
             'latest_poll_list': latest_poll_list, 
@@ -32,8 +32,10 @@ def register_user(request):
             #user = user.get_profile()
             #rm_user.gender= for.cleaned_data['gender']
             #user= request.user.get_profile();
-            rm_user = RmUser(user=user)
-            rm_user.save()
+            gb_user = GbUser(user=user)
+            gb_user.gender = form.cleaned_data['gender']
+            gb_user.birthdate = form.cleaned_data['birthdate']
+            gb_user.save()
             user = authenticate(username=form.cleaned_data['email'], password=form.cleaned_data['password'])
             if user is not None:
                 login(request, user)

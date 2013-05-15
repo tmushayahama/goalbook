@@ -12,156 +12,123 @@ from django.contrib.auth.models import User
 import datetime
 from django.utils import timezone
 
-class RmUser(models.Model):
+class GbUser(models.Model):
     user = models.ForeignKey(User, unique=True, related_name ="foo")
     gender = models.CharField(max_length=3)
+    birthdate = models.DateTimeField();
     class Meta:
-        db_table = u'rm_user'
-   # def json(self):
+        db_table = u'gb_user'
         
     def __unicode__(self):
         return u'%s' % (self.user)
 
-class RmTaskCategory(models.Model):
+#Task
+class GbCategory(models.Model):
     name = models.CharField(max_length=150, unique=True)
     description = models.CharField(max_length=3000, blank=True)
     class Meta:
-        db_table = u'rm_task_category'
+        db_table = u'gb_category'
     def __unicode__(self):
         return u'%s' % (self.name)
 
-class RmTaskType(models.Model):
+class GbType(models.Model):
     name = models.CharField(max_length=150, unique=True)
+    category=models.ForeignKey(GbCategory);
     description = models.CharField(max_length=3000, blank=True)
     class Meta:
-        db_table = u'rm_task_type'
+        db_table = u'gb_type'
     def __unicode__(self):
         return u'%s' % (self.name)
 
-class RmPrivilegeType(models.Model):
-    name = models.CharField(max_length=150, unique=True)
-    description = models.CharField(max_length=3000, blank=True)
-    class Meta:
-        db_table = u'rm_privilege_type'
-    def __unicode__(self):
-        return u'%s' % (self.name)
 
-class RmGroupCategory(models.Model):
-    name = models.CharField(max_length=150, unique=True)
-    description = models.CharField(max_length=3000, blank=True)
-    class Meta:
-        db_table = u'rm_group_category'
-    def __unicode__(self):
-        return u'%s' % (self.name)
-
-class RmTask(models.Model):
+class GbTask(models.Model):
     name = models.CharField(max_length=150)
-    is_group_task = models.IntegerField()
-    task_type = models.ForeignKey(RmTaskType)
-    task_category = models.ForeignKey(RmTaskCategory)
+    description = models.CharField(max_length=3000, blank=True)
+    task_type = models.ForeignKey(GbType, related_name="taskType")
+    task_category = models.ForeignKey(GbType, related_name="taskCategory")
     points_awarded = models.IntegerField(null=True, blank=True)
     award = models.CharField(max_length=765, blank=True)
+    assign_date = models.DateTimeField()
     begin_date = models.DateTimeField()
     end_date = models.DateTimeField(null=True, blank=True)
     class Meta:
-        db_table = u'rm_task'
+        db_table = u'gb_task'
     def __unicode__(self):
         return u'%s' % (self.name)
 
-class RmGroup(models.Model):
+class GbGroup(models.Model):
     name = models.CharField(max_length=150, unique=True)
-    founder = models.ForeignKey(RmUser)
-    group_category = models.ForeignKey(RmGroupCategory)
+    founder = models.ForeignKey(GbUser)
+    group_type = models.ForeignKey(GbType, related_name="groupType")
+    group_category = models.ForeignKey(GbType, related_name="groupCategory")
     founded = models.DateTimeField()
     decription = models.CharField(max_length=3000, blank=True)
     class Meta:
-        db_table = u'rm_group'
+        db_table = u'gb_group'
     def __unicode__(self):
         return u'%s' % (self.name)
 
-class RmGroupMonitor(models.Model):
-    user = models.ForeignKey(RmGroup, related_name="groupMonitorUser")
-    monitor = models.ForeignKey(RmGroup, related_name="groupMonitorMonitor")
-    task = models.ForeignKey(RmTask)
-    class Meta:
-        db_table = u'rm_group_monitor'
-    def __unicode__(self):
-        return u'%s' % (self.name)
-
-class RmGroup(models.Model):
-    name = models.CharField(max_length=150, unique=True)
-    founder = models.ForeignKey(RmUser)
-    group_category = models.ForeignKey(RmGroupCategory)
-    founded = models.DateTimeField()
-    decription = models.CharField(max_length=3000, blank=True)
-    class Meta:
-        db_table = u'rm_group'
-    def __unicode__(self):
-        return u'%s' % (self.name)
-
-class RmGroupMonitor(models.Model):
-    user = models.ForeignKey(RmGroup, related_name="groupMonitorUser")
-    monitor = models.ForeignKey(RmGroup, related_name="groupMonitorMonitor")
-    task = models.ForeignKey(RmTask)
-    class Meta:
-        db_table = u'rm_group_monitor'
-    def __unicode__(self):
-        return u'%s' % (self.user)
-    
-
-class RmGroupTask(models.Model):
-    taskee = models.ForeignKey(RmGroup, db_column='taskee', related_name="groupTaskTaskee")
-    tasker = models.ForeignKey(RmGroup, db_column='tasker', related_name="groupTaskTasker")
-    task = models.ForeignKey(RmTask)
-    class Meta:
-        db_table = u'rm_group_task'
-
-class RmIsMember(models.Model):
-    user = models.ForeignKey(RmUser)
-    group = models.ForeignKey(RmGroup)
-    privilege_type = models.ForeignKey(RmPrivilegeType)
+class GbIsMember(models.Model):
+    user = models.ForeignKey(GbUser)
+    group = models.ForeignKey(GbGroup)
+    member_type = models.ForeignKey(GbType)
     date_joined = models.DateTimeField()
     class Meta:
-        db_table = u'rm_is_member'
+        db_table = u'gb_is_member'
 
-
-
-class RmUserMonitor(models.Model):
-    user = models.ForeignKey(RmUser, related_name="userMonitorUser")
-    monitor = models.ForeignKey(RmUser, related_name="userMonitorMonitor")
-    task = models.ForeignKey(RmTask)
+class GbGroupTask(models.Model):
+    taskee = models.ForeignKey(GbGroup, db_column='taskee', related_name="groupTaskTaskee")
+    tasker = models.ForeignKey(GbGroup, db_column='tasker', related_name="groupTaskTasker")
+    task = models.ForeignKey(GbTask)
     class Meta:
-        db_table = u'rm_user_monitor'
+        db_table = u'gb_group_task'
 
-class RmUserTask(models.Model):
-    taskee = models.ForeignKey(RmUser, db_column='taskee', related_name="UserTaskTaskee")
-    tasker = models.ForeignKey(RmUser, db_column='tasker', related_name="UserTaskTasker")
-    task = models.ForeignKey(RmTask)
+class GbGroupMonitor(models.Model):
+    user = models.ForeignKey(GbGroup, related_name="groupMonitorUser")
+    monitor = models.ForeignKey(GbGroup, related_name="groupMonitorMonitor")
+    task = models.ForeignKey(GbTask)
+    monitor_type = models.ForeignKey(GbType, related_name="groupMonitorType")
+    monitor_status = models.ForeignKey(GbType, related_name="groupMonitorStatus")
     class Meta:
-        db_table = u'rm_user_task'
+        db_table = u'gb_group_monitor'
+    def __unicode__(self):
+        return u'%s' % (self.task)
+
+class GbUserMonitor(models.Model):
+    user = models.ForeignKey(GbUser, related_name="userMonitorUser")
+    monitor = models.ForeignKey(GbUser, related_name="userMonitorMonitor")
+    task = models.ForeignKey(GbTask)
+    monitor_type = models.ForeignKey(GbType, related_name="userMonitorType")
+    monitor_status = models.ForeignKey(GbType, related_name="userMonitorStatus")
+    class Meta:
+        db_table = u'gb_user_monitor'
+
+class GbUserTask(models.Model):
+    taskee = models.ForeignKey(GbUser, db_column='taskee', related_name="UserTaskTaskee")
+    tasker = models.ForeignKey(GbUser, db_column='tasker', related_name="UserTaskTasker")
+    task = models.ForeignKey(GbTask)
+    class Meta:
+        db_table = u'gb_user_task'
     def __unicode__(self):
         return u'%s %s %s' % (self.taskee, self.tasker, self.task)
 
-class RmFollow(models.Model):
-    user = models.ForeignKey(RmUser, related_name="followUser")
-    friend = models.ForeignKey(RmUser, related_name="followFollow")
+class GbRelationship(models.Model):
+    user = models.ForeignKey(GbUser, related_name="friendUser")
+    friend = models.ForeignKey(GbUser, related_name="friendFriend")
+    friendship_type = models.ForeignKey(GbType, related_name="friendshipType")
+    friendship_status = models.ForeignKey(GbType, related_name="statusType")
+    request_date = models.DateTimeField()
+    accepted_date = models.DateTimeField()
     class Meta:
-        db_table = u'rm_follow'
-
-class RmFriend(models.Model):
-    user = models.ForeignKey(RmUser, related_name="friendUser")
-    friend = models.ForeignKey(RmUser, related_name="friendFriend")
-    privilege_type = models.ForeignKey(RmPrivilegeType)
-    class Meta:
-        db_table = u'rm_friend'
+        db_table = u'gb_relationship'
     def __unicode__(self):
-        return u'%s %s %s' % (self.user, self.friend, self.privilege_type)
+        return u'%s %s %s' % (self.user, self.friend, self.friendship_type)
 
-
-class RmTaskHistory(models.Model):
-    task = models.ForeignKey(RmTask)
-    date_done = models.DateTimeField()
+class GbTaskTimeline(models.Model):
+    task = models.ForeignKey(GbTask)
+    entry_name = models.CharField(max_length=150, unique=True)
+    entry_time = models.DateTimeField()
     class Meta:
-        db_table = u'rm_task_history'
-
-
+        db_table = u'gb_task_timeline'
+    def __unicode__(self):
+        return u'%s %s %s' % (self.task, self.entry_name, self.entry_time)
