@@ -23,6 +23,7 @@ urlpatterns = patterns('',
                        url(r'^home/commit/$', 'rm.views.commit_goal'),
                        url(r'^register/$', 'rm.views.register_user'),
                        url(r'^profile/(?P<username>.*)$', 'rm.views.profile_page'),
+                       url(r'^profile/(?P<username>.*)/(?P<type>.*)$', 'rm.views.send_request'),
                        #url(r'^(?P<name>.*)/$', 'rm.views.'),
 )
 if settings.DEBUG:

@@ -136,8 +136,9 @@ a {
     border-left: #aaaaaa 1px solid;
     border-right: #aaaaaa 1px solid;
 }
-.rm-active a, ative a{
-    color:#444;
+.rm-active a, 
+li .ative a{
+    color:#000;
     font-weight:bold;
 }
 .rm-active a:hover {

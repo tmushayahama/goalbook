@@ -1,10 +1,10 @@
 $(document).ready(function (e) {
-    console.log("Loading rm.js...");
+    console.log("Loading rm_profile.js...");
     $.ajaxSetup({traditional: true});
-  //  if (authorization=="owner") {
+ /*   if (authorization=="owner") {
         populateRecentCommitments(); 
         populateSuggestedFriends();
-   // }
+    }*/
     addEventHandlers();
 });
 function populateRecentCommitments() {
@@ -30,6 +30,16 @@ function goalCommit(e) {
                          .text(data["commitment"])));
     }, "json");
 }
+function sendRequest(e, url) {
+    alert(url);
+    e.preventDefault();
+    $.post(url, function(data) {
+        console.log(data);
+      //  console.log(data["request"]);
+       // console.log(data["taskee_name"])
+       
+    }, "json");
+}
 function addEventHandlers() {
     $('#rm-post-tab a').click(function (e) {
         console.log("tab clicked");
@@ -49,6 +59,9 @@ function addEventHandlers() {
     });
     $("#rm-commit-post-home").click(function(e) {
         goalCommit(e);
+    });
+    $(".gb-send-request").click(function(e) {
+        sendRequest(e, $(this).attr('send-request-url'));
     });
     $('#rm-profile-tab a').click(function (e) {
         console.log("tab clicked");

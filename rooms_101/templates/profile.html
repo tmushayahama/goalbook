@@ -1,13 +1,12 @@
 {% extends "base.html" %}
 {% block body %}
 <script id="tft-expt-types" type="text/javascript">
-  //var friends = {{ friends|safe }}
+  var authorization = "{{ authorization }}"
   var goals = {{ goals|safe }}
   var suggestedFriends = {{ suggested_friends|safe }}
   var avatar = {{ STATIC_URL }}+"img/rm_avatar.jpg"
-  var data = {{ profile_data|safe }}
   console.log(goals)
-  console.log(data)
+  console.log(authorization)
 </script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/gb_components.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/rm_profile.js"></script>

@@ -1,11 +1,9 @@
 {% extends "base.html" %}
 {% block body %}
 <script id="tft-expt-types" type="text/javascript">
- // var friends = {{ friends|safe }}
- // var goals = {{ goals|safe }}
-  var data = {{ profile_data|safe }}
- // console.log(friends)
- console.log(data)
+ //var friends = {{ friends|safe }}
+ var authorization = "{{ authorization }}"
+ console.log(authorization)
 </script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/rm_profile.js"></script>
 <div class="container-fluid">
@@ -131,7 +129,7 @@
                     <h3>
                       <a>{{ first_name }} {{ last_name }}</a>
                       <a class="pull-right btn">Subscribe</a>
-                      <a class="pull-right btn btn-success">Add Friend</a>
+                      <a class="gb-send-request pull-right btn btn-success" send-request-url="profile/{{ username }}/friend_request" >Add Friend</a>
                     </h3>
                   </li>
                   <li class="rm-goal-preview">
